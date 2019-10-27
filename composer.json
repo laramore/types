@@ -1,0 +1,36 @@
+{
+    "name": "laramore/types",
+    "description": "All default types used by Laramore",
+    "keywords": ["Laramore", "Laravel", "Model", "Automatic", "Auto", "Fields", "Field", "Meta", "Types"],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.0.0",
+        "nastuzzi-samy/reflection-namespace": "^1.0",
+        "laramore/base": "^1.0"
+    },
+    "suggest": {
+        "laramore/laramore": "Laramore\\Base is made in order to work with Laramore"
+    },
+    "authors": [
+        {
+            "name": "Nastuzzi Samy",
+            "email": "samy@nastuzzi.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Laramore\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": [
+            "./vendor/bin/phpcs src",
+            "./vendor/bin/phpmd src text phpmd.xml"
+        ]
+    },
+    "require-dev": {
+        "phpmd/phpmd": "^2.6",
+        "squizlabs/php_codesniffer": "^3.3",
+        "phpstan/phpstan": "^0.11.7"
+    }
+}
