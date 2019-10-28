@@ -17,6 +17,13 @@ use Laramore\Elements\OperatorManager;
 class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
 {
     /**
+     * Type manager.
+     *
+     * @var OperatorManager
+     */
+    protected static $manager;
+
+    /**
      * Default types to create.
      *
      * @var array
