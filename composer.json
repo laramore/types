@@ -38,7 +38,7 @@
             "providers": [
                 "Laramore\\Providers\\TypesProvider",
                 "Laramore\\Providers\\GrammarTypesProvider",
-                "Laramore\\Providers\\OperatorProvider"
+                "Laramore\\Providers\\OperatorsProvider"
             ],
             "aliases": {
                 "GrammarTypes": "Laramore\\Facades\\GrammarTypes",

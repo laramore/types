@@ -14,7 +14,7 @@ use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
 use Laramore\Elements\OperatorManager;
 
-class TypesProvider extends ServiceProvider implements IsALaramoreProvider
+class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
 {
     /**
      * Default types to create.
