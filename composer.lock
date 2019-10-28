@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d526223f39549d81dcc5a10406a5b072",
+    "content-hash": "3adac5c8dfa2455fd80b4bd82740f42f",
     "packages": [
         {
             "name": "laramore/base",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laramore/base.git",
-                "reference": "630a88b28cd51e35b127bd49e17b7e222251bca5"
+                "reference": "9ce95d53977cbf69ed143048a278a16dc747c350"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laramore/base/zipball/630a88b28cd51e35b127bd49e17b7e222251bca5",
-                "reference": "630a88b28cd51e35b127bd49e17b7e222251bca5",
+                "url": "https://api.github.com/repos/laramore/base/zipball/9ce95d53977cbf69ed143048a278a16dc747c350",
+                "reference": "9ce95d53977cbf69ed143048a278a16dc747c350",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "owned",
                 "unlock"
             ],
-            "time": "2019-10-27T15:18:30+00:00"
+            "time": "2019-10-27T23:50:51+00:00"
         },
         {
             "name": "nastuzzi-samy/reflection-namespace",
