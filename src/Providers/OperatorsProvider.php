@@ -28,7 +28,7 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
      *
      * @var array
      */
-    protected $defaultOperators = [
+    protected static $defaultOperators = [
         'null' => ['null', 'null'],
         'isNull' => ['null', 'null'],
         'notNull' => ['notNull', 'null'],
