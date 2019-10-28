@@ -19,10 +19,10 @@ class Operator extends BaseElement
      * @param string $native
      * @param string $needs
      */
-    public function __construct(string $name, string $native, string $needs=null)
+    public function __construct(string $name, string $native, string $need=null)
     {
         parent::__construct($name, $native);
 
-        $this->needs = $needs;
+        $this->set('need', $need);
     }
 }
