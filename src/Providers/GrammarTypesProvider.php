@@ -13,6 +13,7 @@ namespace Laramore\Providers;
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
 use Laramore\Grammars\GrammarTypeManager;
+use ReflectionNamespace;
 
 class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvider
 {
