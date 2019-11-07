@@ -12,7 +12,7 @@ namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
-use Laramore\Grammars\GrammarTypeManager;
+use Laramore\Exceptions\ConfigException;
 use ReflectionNamespace;
 
 class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvider
@@ -25,11 +25,16 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
     protected static $manager;
 
     /**
-     * Default grammar namespace.
+     * Publish the config linked to the manager.
      *
-     * @var string
+     * @return void
      */
-    protected $grammarNamespace = 'Illuminate\\Database\\Schema\\Grammars';
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/grammars.php' => config_path('grammars.php'),
+        ]);
+    }
 
     /**
      * Register our facade and create the manager.
@@ -38,14 +43,47 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/grammars.php', 'grammars',
+        );
+
         static::getManager();
 
         $this->app->singleton('GrammarTypes', function() {
             return static::getManager();
         });
 
-        $this->app->booting([$this, 'bootingCallback']);
         $this->app->booted([$this, 'bootedCallback']);
+    }
+
+    /**
+     * Return the default values for the manager of this provider.
+     *
+     * @return array
+     */
+    public static function getDefaults(): array
+    {
+        $classes = config('grammars.defaults');
+
+        switch ($classes) {
+            case 'automatic':
+                return (new ReflectionNamespace(config('grammars.namespace')))->getClassNames();
+
+            case 'disabled':
+                return [];
+
+            case 'base':
+                return config('grammars.namespace');
+
+            default:
+                if (\is_array($classes)) {
+                    return $classes;
+                }
+        }
+
+        throw new ConfigException(
+            'grammars.classes', ["'automatic'", "'base'", "'disabled'", 'array of class names'], $classes
+        );
     }
 
     /**
@@ -55,7 +93,15 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
      */
     protected static function generateManager()
     {
-        static::$manager = new GrammarTypeManager();
+        $class = config('grammars.manager');
+
+        static::$manager = new $class([]);
+
+        foreach (static::getDefaults() as $class) {
+            if (static::$manager->doesManage($class)) {
+                static::$manager->createHandler($class);
+            }
+        }
     }
 
     /**
@@ -70,23 +116,6 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
         }
 
         return static::$manager;
-    }
-
-    /**
-     * Prepare grammar observable handlers before booting.
-     * Create grammar observable handlers for each possible grammars and add them to the GrammarTypeManager.
-     *
-     * @return void
-     */
-    public function bootingCallback()
-    {
-        $manager = static::getManager();
-
-        foreach ((new ReflectionNamespace($this->grammarNamespace))->getClassNames() as $class) {
-            if ($manager->doesManage($class)) {
-                $manager->createHandler($class);
-            }
-        }
     }
 
     /**
