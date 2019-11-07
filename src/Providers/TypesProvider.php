@@ -12,7 +12,6 @@ namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
-use Laramore\Elements\TypeManager;
 
 class TypesProvider extends ServiceProvider implements IsALaramoreProvider
 {
@@ -24,30 +23,28 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
     protected static $manager;
 
     /**
-     * Default manager to create.
+     * Publish the config linked to the manager.
      *
-     * @var array
+     * @return void
      */
-    protected static $defaultTypes = [
-        'boolean' => 'bool',
-        'integer' => 'integer',
-        'unsignedInteger' => 'integer',
-        'increment' => 'integer',
-        'string' => 'string',
-        'text' => 'string',
-        'char' => 'string',
-        'timestamp' => 'string',
-        'datetime' => 'string',
-        'enum' => 'enum',
-    ];
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/types.php' => config_path('types.php'),
+        ]);
+    }
 
     /**
-     * Create the TypeManager and lock it after booting.
+     * Register our facade and create the manager.
      *
      * @return void
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/types.php', 'types',
+        );
+
         static::getManager();
 
         $this->app->singleton('Types', function() {
@@ -58,13 +55,25 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
     }
 
     /**
+     * Return the default values for the manager of this provider.
+     *
+     * @return array
+     */
+    public static function getDefaults(): array
+    {
+        return config('types.defaults');
+    }
+
+    /**
      * Generate the corresponded manager.
      *
      * @return void
      */
     protected static function generateManager()
     {
-        static::$manager = new TypeManager(static::$defaultTypes);
+        $class = config('types.manager');
+
+        static::$manager = new $class(static::getDefaults());
     }
 
     /**
