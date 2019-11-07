@@ -12,7 +12,6 @@ namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
-use Laramore\Elements\OperatorManager;
 
 class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
 {
@@ -24,53 +23,16 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
     protected static $manager;
 
     /**
-     * Default types to create.
+     * Publish the config linked to the manager.
      *
-     * @var array
+     * @return void
      */
-    protected static $defaultOperators = [
-        'null' => ['null', 'null'],
-        'isNull' => ['null', 'null'],
-        'notNull' => ['notNull', 'null'],
-        'isNotNull' => ['notNull', 'null'],
-        'doesntExist' => ['null', 'null'],
-        'dontExist' => ['null', 'null'],
-        'exist' => ['notNull', 'null'],
-        'exists' => ['notNull', 'null'],
-        'equal' => '=',
-        'inf' => '<',
-        'sup' => '>',
-        'infOrEq' => '<=',
-        'supOrEq' => '>=',
-        'safeNotEqual' => '<>',
-        'notEqual' => '!=',
-        'safeEqual' => '<=>',
-        'like' => 'like',
-        'likeBinary' => 'like binary',
-        'notLike' => 'not like',
-        'ilike' => 'ilike',
-        'notIlike' => 'not ilike',
-        'rlike', 'rlike',
-        'regexp' => 'regexp',
-        'notRegexp' => 'not regexp',
-        'similarTo' => 'similar to',
-        'notSimilarTo' => 'not similar to',
-        'bitand' => ['&', 'binary'],
-        'bitor' => ['|', 'binary'],
-        'bitxor' => ['^', 'binary'],
-        'bitleft' => ['<<', 'binary'],
-        'bitright' => ['>>', 'binary'],
-        'match' => '~',
-        'imatch' => '~*',
-        'notMatch' => '!~',
-        'notImatch' => '!~*',
-        'same' => '~~',
-        'isame' => '~~*',
-        'notSame' => '!~~',
-        'notIsame' => '!~~*',
-        'in' => ['in', 'collection'],
-        'notIn' => ['not in', 'collection'],
-    ];
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/operators.php' => config_path('operators.php'),
+        ]);
+    }
 
     /**
      * Create the OperatorManager and lock it after booting.
@@ -79,6 +41,10 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/operators.php', 'operators',
+        );
+
         static::getManager();
 
         $this->app->singleton('Operators', function() {
@@ -89,13 +55,25 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
     }
 
     /**
+     * Return the default values for the manager of this provider.
+     *
+     * @return array
+     */
+    public static function getDefaults(): array
+    {
+        return config('operators.defaults');
+    }
+
+    /**
      * Generate the corresponded manager.
      *
      * @return void
      */
     protected static function generateManager()
     {
-        static::$manager = new OperatorManager(static::$defaultOperators);
+        $class = config('operators.manager');
+
+        static::$manager = new $class(static::getDefaults());
     }
 
     /**
