@@ -25,4 +25,14 @@ class Operator extends BaseElement
 
         $this->set('need', $need);
     }
+
+    /**
+     * Return the element native value.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->get('native');
+    }
 }
