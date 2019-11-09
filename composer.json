@@ -36,12 +36,14 @@
     "extra": {
         "laravel": {
             "providers": [
+                "Laramore\\Providers\\RulesProvider",
                 "Laramore\\Providers\\TypesProvider",
                 "Laramore\\Providers\\GrammarTypesProvider",
                 "Laramore\\Providers\\OperatorsProvider"
             ],
             "aliases": {
                 "GrammarTypes": "Laramore\\Facades\\GrammarTypes",
+                "Rules": "Laramore\\Facades\\Rules",
                 "Types": "Laramore\\Facades\\Types",
                 "Operators": "Laramore\\Facades\\Operators",
                 "Op": "Laramore\\Facades\\Operators"
