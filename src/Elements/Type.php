@@ -10,6 +10,8 @@
 
 namespace Laramore\Elements;
 
+use Rules;
+
 class Type extends BaseElement
 {
     /**
@@ -30,4 +32,21 @@ class Type extends BaseElement
 
         return $type($value);
     }
+
+	/**
+	 * Define all rules to add if this rule is added.
+	 *
+	 * @param array $rules
+	 * @return self
+	 */
+	public function setDefaultRules(array $rules)
+	{
+		$this->needsToBeUnlocked();
+
+		$this->values['default_rules'] = \array_map(function ($rule) {
+			return \is_string($rule) ? Rules::getOrCreate($rule) : $rule;
+		}, $rules);
+
+		return $this;
+	}
 }
