@@ -12,27 +12,18 @@ namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
+use Laramore\Traits\Providers\MergesConfig;
 
 class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
 {
+    use MergesConfig;
+
     /**
      * Type manager.
      *
      * @var OperatorManager
      */
     protected static $manager;
-
-    /**
-     * Publish the config linked to the manager.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->publishes([
-            __DIR__.'/../config/operators.php' => config_path('operators.php'),
-        ]);
-    }
 
     /**
      * Create the OperatorManager and lock it after booting.
@@ -42,10 +33,8 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/operators.php', 'operators',
+            __DIR__.'/../../config/operators.php', 'operators',
         );
-
-        static::getManager();
 
         $this->app->singleton('Operators', function() {
             return static::getManager();
@@ -55,13 +44,25 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
     }
 
     /**
+     * Publish the config linked to the manager.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../config/operators.php' => config_path('operators.php'),
+        ]);
+    }
+
+    /**
      * Return the default values for the manager of this provider.
      *
      * @return array
      */
     public static function getDefaults(): array
     {
-        return config('operators.defaults');
+        return config('operators.configurations');
     }
 
     /**
@@ -73,7 +74,8 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
     {
         $class = config('operators.manager');
 
-        static::$manager = new $class(static::getDefaults());
+        static::$manager = new $class();
+        static::$manager->set(static::getDefaults());
     }
 
     /**

@@ -13,28 +13,19 @@ namespace Laramore\Providers;
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
 use Laramore\Exceptions\ConfigException;
+use Laramore\Traits\Providers\MergesConfig;
 use ReflectionNamespace;
 
 class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvider
 {
+    use MergesConfig;
+
     /**
      * Type manager.
      *
      * @var TypeManager
      */
     protected static $manager;
-
-    /**
-     * Publish the config linked to the manager.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->publishes([
-            __DIR__.'/../config/grammars.php' => config_path('grammars.php'),
-        ]);
-    }
 
     /**
      * Register our facade and create the manager.
@@ -44,10 +35,8 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/grammars.php', 'grammars',
+            __DIR__.'/../../config/grammars.php', 'grammars',
         );
-
-        static::getManager();
 
         $this->app->singleton('GrammarTypes', function() {
             return static::getManager();
@@ -57,13 +46,25 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
     }
 
     /**
+     * Publish the config linked to the manager.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../config/grammars.php' => config_path('grammars.php'),
+        ]);
+    }
+
+    /**
      * Return the default values for the manager of this provider.
      *
      * @return array
      */
     public static function getDefaults(): array
     {
-        $classes = config('grammars.defaults');
+        $classes = config('grammars.configurations');
 
         switch ($classes) {
             case 'automatic':
@@ -95,7 +96,7 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
     {
         $class = config('grammars.manager');
 
-        static::$manager = new $class([]);
+        static::$manager = new $class();
 
         foreach (static::getDefaults() as $class) {
             if (static::$manager->doesManage($class)) {

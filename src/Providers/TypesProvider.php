@@ -12,27 +12,18 @@ namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
+use Laramore\Traits\Providers\MergesConfig;
 
 class TypesProvider extends ServiceProvider implements IsALaramoreProvider
 {
+    use MergesConfig;
+
     /**
      * Type manager.
      *
      * @var TypeManager
      */
     protected static $manager;
-
-    /**
-     * Publish the config linked to the manager.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->publishes([
-            __DIR__.'/../config/types.php' => config_path('types.php'),
-        ]);
-    }
 
     /**
      * Register our facade and create the manager.
@@ -42,10 +33,8 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/types.php', 'types',
+            __DIR__.'/../../config/types.php', 'types',
         );
-
-        static::getManager();
 
         $this->app->singleton('Types', function() {
             return static::getManager();
@@ -54,6 +43,18 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
         $this->app->booted([$this, 'bootedCallback']);
     }
 
+
+    /**
+     * Publish the config linked to the manager.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../../config/types.php' => config_path('types.php'),
+        ]);
+    }
     /**
      * Return the default values for the manager of this provider.
      *
@@ -61,7 +62,7 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return config('types.defaults');
+        return config('types.configurations');
     }
 
     /**
@@ -73,7 +74,9 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
     {
         $class = config('types.manager');
 
-        static::$manager = new $class(static::getDefaults());
+        static::$manager = new $class();
+        static::$manager->define('default_rules', ['visible', 'fillable', 'required']);
+        static::$manager->set(static::getDefaults());
     }
 
     /**
