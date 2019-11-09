@@ -31,7 +31,7 @@ return [
     |
     */
 
-    'defaults' =>  [
+    'configurations' =>  [
         'null' => [
             'needs' => 'null',
         ],

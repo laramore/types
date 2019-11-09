@@ -35,6 +35,6 @@ return [
     |
     */
 
-    'defaults' => 'automatic',
+    'configurations' => 'automatic',
 
 ];
