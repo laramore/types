@@ -10,10 +10,34 @@
 
 namespace Laramore\Elements;
 
+use Laramore\Interfaces\IsConfigurable;
 use Rules;
 
-class Type extends BaseElement
+class Type extends BaseElement implements IsConfigurable
 {
+    /**
+     * Return the configuration path for this field.
+     *
+     * @param string $path
+     * @return mixed
+     */
+    public function getConfigPath(string $path=null)
+    {
+        return 'types.configurations.'.$this->getName().(\is_null($path) ? '' : '.'.$path);
+    }
+
+    /**
+     * Return the configuration for this field.
+     *
+     * @param string $path
+     * @param mixed  $default
+     * @return mixed
+     */
+    public function getConfig(string $path=null, $default=null)
+    {
+        return config($this->getConfigPath($path), $default);
+    }
+
     /**
      * Tell if a value is of the right type.
      *

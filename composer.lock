@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "laramore/base",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laramore/base.git",
-                "reference": "4491f74ea706e4592599c505af1d1571e14052f1"
+                "reference": "588399570f55f8c6925bd4df54b1733c424b226d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laramore/base/zipball/4491f74ea706e4592599c505af1d1571e14052f1",
-                "reference": "4491f74ea706e4592599c505af1d1571e14052f1",
+                "url": "https://api.github.com/repos/laramore/base/zipball/588399570f55f8c6925bd4df54b1733c424b226d",
+                "reference": "588399570f55f8c6925bd4df54b1733c424b226d",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "owned",
                 "unlock"
             ],
-            "time": "2019-11-09T14:00:16+00:00"
+            "time": "2019-11-10T16:57:27+00:00"
         },
         {
             "name": "nastuzzi-samy/reflection-namespace",
