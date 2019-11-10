@@ -43,7 +43,6 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
         $this->app->booted([$this, 'bootedCallback']);
     }
 
-
     /**
      * Publish the config linked to the manager.
      *
@@ -55,6 +54,7 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
             __DIR__.'/../../config/types.php' => config_path('types.php'),
         ]);
     }
+
     /**
      * Return the default values for the manager of this provider.
      *

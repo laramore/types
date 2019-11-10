@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'manager' => 'Laramore\\Grammars\\GrammarTypeManager',
+    'manager' => Laramore\Grammars\GrammarTypeManager::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'namespace' => 'Illuminate\\Database\\Schema\\Grammars',
+    'namespace' => Illuminate\Database\Schema\Grammars::class,
 
     /*
     |--------------------------------------------------------------------------

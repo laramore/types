@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'manager' => 'Laramore\\Elements\\OperatorManager',
+    'manager' => Laramore\Elements\OperatorManager::class,
 
     /*
     |--------------------------------------------------------------------------

@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'manager' => 'Laramore\\Elements\\TypeManager',
+    'manager' => Laramore\Elements\TypeManager::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -76,12 +76,6 @@ return [
             'native' => 'link',
             'default_rules' => [
                 'visible', 'fillable', 'required',
-            ],
-        ],
-        'increment' => [
-            'native' => 'integer',
-            'default_rules' => [
-                'visible', 'fillable', 'required', 'unsigned', 'not_zero', 'require_sign',
             ],
         ],
         'password' => [

@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'manager' => 'Laramore\\Elements\\RuleManager',
+    'manager' => Laramore\Elements\RuleManager::class,
 
     /*
     |--------------------------------------------------------------------------

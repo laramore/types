@@ -17,7 +17,7 @@ class Operator extends BaseElement
      *
      * @param string $name
      * @param string $native
-     * @param string $needs
+     * @param string $need
      */
     public function __construct(string $name, string $native, string $need=null)
     {
