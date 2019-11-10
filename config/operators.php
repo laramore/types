@@ -35,22 +35,22 @@ return [
         'null' => [
             'needs' => 'null',
         ],
-        'isNull' => [
+        'is_null' => [
             'native' => 'null',
             'needs' => 'null',
         ],
-        'notNull' => [
+        'not_null' => [
             'needs' => 'null',
         ],
-        'isNotNull' => [
+        'is_not_null' => [
             'native' => 'not null',
             'needs' => 'null',
         ],
-        'doesntExist' => [
+        'doesnt_exist' => [
             'native' => 'null',
             'needs' => 'null',
         ],
-        'dontExist' => [
+        'dont_exist' => [
             'native' => 'null',
             'needs' => 'null',
         ],
@@ -63,23 +63,25 @@ return [
             'needs' => 'null',
         ],
         'equal' => '=',
+        'eq' => '=',
         'inf' => '<',
         'sup' => '>',
-        'infOrEq' => '<=',
-        'supOrEq' => '>=',
-        'safeNotEqual' => '<>',
-        'notEqual' => '!=',
-        'safeEqual' => '<=>',
+        'inf_or_eq' => '<=',
+        'sup_or_eq' => '>=',
+        'safe_not_equal' => '<>',
+        'not_eq' => '!=',
+        'not_equal' => '!=',
+        'safe_equal' => '<=>',
         'like' => 'like',
-        'likeBinary' => 'like binary',
-        'notLike' => 'not like',
+        'like_binary' => 'like binary',
+        'not_nike' => 'not like',
         'ilike' => 'ilike',
-        'notIlike' => 'not ilike',
+        'not_ilike' => 'not ilike',
         'rlike', 'rlike',
         'regexp' => 'regexp',
-        'notRegexp' => 'not regexp',
-        'similarTo' => 'similar to',
-        'notSimilarTo' => 'not similar to',
+        'not_regexp' => 'not regexp',
+        'similar_to' => 'similar to',
+        'not_timilar_to' => 'not similar to',
         'bitand' => [
             'native' => '&',
             'needs' => 'binary',
@@ -102,17 +104,17 @@ return [
         ],
         'match' => '~',
         'imatch' => '~*',
-        'notMatch' => '!~',
-        'notImatch' => '!~*',
+        'not_match' => '!~',
+        'not_imatch' => '!~*',
         'same' => '~~',
         'isame' => '~~*',
-        'notSame' => '!~~',
-        'notIsame' => '!~~*',
+        'not_same' => '!~~',
+        'not_isame' => '!~~*',
         'in' => [
             'native' => 'in',
             'needs' => 'collection'
         ],
-        'notIn' => [
+        'not_in' => [
             'native' => 'not in',
             'needs' => 'collection'
         ],
