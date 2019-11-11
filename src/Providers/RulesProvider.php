@@ -12,7 +12,7 @@ namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
-use Laramore\Traits\Providers\MergesConfig;
+use Laramore\Traits\Provider\MergesConfig;
 
 class RulesProvider extends ServiceProvider implements IsALaramoreProvider
 {

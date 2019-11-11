@@ -13,7 +13,7 @@ namespace Laramore\Providers;
 use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\IsALaramoreProvider;
 use Laramore\Exceptions\ConfigException;
-use Laramore\Traits\Providers\MergesConfig;
+use Laramore\Traits\Provider\MergesConfig;
 use ReflectionNamespace;
 
 class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvider
