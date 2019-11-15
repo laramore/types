@@ -11,7 +11,9 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Laramore\Interfaces\IsALaramoreProvider;
+use Laramore\Interfaces\{
+	IsALaramoreManager, IsALaramoreProvider
+};
 use Laramore\Exceptions\ConfigException;
 use Laramore\Traits\Provider\MergesConfig;
 use ReflectionNamespace;
@@ -23,9 +25,9 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
     /**
      * Type manager.
      *
-     * @var TypeManager
+     * @var array
      */
-    protected static $manager;
+    protected static $managers;
 
     /**
      * Register our facade and create the manager.
@@ -68,7 +70,10 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
 
         switch ($classes) {
             case 'automatic':
-                return (new ReflectionNamespace(config('grammars.namespace')))->getClassNames();
+                $classes = (new ReflectionNamespace(config('grammars.namespace')))->getClassNames();
+                app('config')->set('grammars.configurations', $classes);
+
+                return $classes;
 
             case 'disabled':
                 return [];
@@ -83,40 +88,45 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
         }
 
         throw new ConfigException(
-            'grammars.classes', ["'automatic'", "'base'", "'disabled'", 'array of class names'], $classes
+            'grammars.configurations', ["'automatic'", "'base'", "'disabled'", 'array of class names'], $classes
         );
     }
 
     /**
      * Generate the corresponded manager.
      *
-     * @return void
+     * @param  string $key
+     * @return IsALaramoreManager
      */
-    protected static function generateManager()
+    public static function generateManager(string $key): IsALaramoreManager
     {
         $class = config('grammars.manager');
 
-        static::$manager = new $class();
+        static::$managers[$key] = $manager = new $class();
 
         foreach (static::getDefaults() as $class) {
-            if (static::$manager->doesManage($class)) {
-                static::$manager->createHandler($class);
+            if ($manager->doesManage($class)) {
+                $manager->createHandler($class);
             }
         }
+
+		return $manager;
     }
 
     /**
      * Return the generated manager for this provider.
      *
-     * @return object
+     * @return IsALaramoreManager
      */
-    public static function getManager(): object
+    public static function getManager(): IsALaramoreManager
     {
-        if (\is_null(static::$manager)) {
-            static::generateManager();
+        $appHash = \spl_object_hash(app());
+
+        if (!isset(static::$managers[$appHash])) {
+            return static::generateManager($appHash);
         }
 
-        return static::$manager;
+        return static::$managers[$appHash];
     }
 
     /**

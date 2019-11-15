@@ -13,8 +13,9 @@ namespace Laramore\Grammars;
 use Illuminate\Database\Grammar;
 use Illuminate\Database\Schema\Blueprint;
 use Laramore\Observers\BaseManager;
+use Laramore\Interfaces\IsALaramoreManager;
 
-class GrammarTypeManager extends BaseManager
+class GrammarTypeManager extends BaseManager implements IsALaramoreManager
 {
     /**
      * Allowed observable sub class.

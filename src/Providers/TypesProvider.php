@@ -11,7 +11,9 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Laramore\Interfaces\IsALaramoreProvider;
+use Laramore\Interfaces\{
+	IsALaramoreManager, IsALaramoreProvider
+};
 use Laramore\Traits\Provider\MergesConfig;
 
 class TypesProvider extends ServiceProvider implements IsALaramoreProvider
@@ -21,9 +23,9 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
     /**
      * Type manager.
      *
-     * @var TypeManager
+     * @var array
      */
-    protected static $manager;
+    protected static $managers;
 
     /**
      * Register our facade and create the manager.
@@ -68,29 +70,34 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
     /**
      * Generate the corresponded manager.
      *
-     * @return void
+     * @param  string $key
+     * @return IsALaramoreManager
      */
-    protected static function generateManager()
+    public static function generateManager(string $key): IsALaramoreManager
     {
         $class = config('types.manager');
 
-        static::$manager = new $class();
-        static::$manager->define('default_rules', ['visible', 'fillable', 'required']);
-        static::$manager->set(static::getDefaults());
+        static::$managers[$key] = $manager = new $class();
+        $manager->define('default_rules', ['visible', 'fillable', 'required']);
+        $manager->set(static::getDefaults());
+
+		return $manager;
     }
 
     /**
      * Return the generated manager for this provider.
      *
-     * @return object
+     * @return IsALaramoreManager
      */
-    public static function getManager(): object
+    public static function getManager(): IsALaramoreManager
     {
-        if (\is_null(static::$manager)) {
-            static::generateManager();
+        $appHash = \spl_object_hash(app());
+
+        if (!isset(static::$managers[$appHash])) {
+            return static::generateManager($appHash);
         }
 
-        return static::$manager;
+        return static::$managers[$appHash];
     }
 
     /**

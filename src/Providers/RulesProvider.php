@@ -11,7 +11,9 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Laramore\Interfaces\IsALaramoreProvider;
+use Laramore\Interfaces\{
+	IsALaramoreManager, IsALaramoreProvider
+};
 use Laramore\Traits\Provider\MergesConfig;
 
 class RulesProvider extends ServiceProvider implements IsALaramoreProvider
@@ -21,9 +23,9 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
     /**
      * Rule manager.
      *
-     * @var RuleManager
+     * @var array
      */
-    protected static $manager;
+    protected static $managers;
 
     /**
      * Register our facade and create the manager.
@@ -68,31 +70,35 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
     /**
      * Generate the corresponded manager.
      *
-     * @return void
+     * @param  string $key
+     * @return IsALaramoreManager
      */
-    protected static function generateManager()
+    public static function generateManager(string $key): IsALaramoreManager
     {
         $class = config('rules.manager');
 
-        static::$manager = new $class();
+        static::$managers[$key] = $manager = new $class();
 
-        static::$manager->define('adds', []);
-        static::$manager->define('removes', []);
-        static::$manager->set(static::getDefaults());
+        $manager->define('adds', []);
+        $manager->define('removes', []);
+        $manager->set(static::getDefaults());
+
+        return $manager;
     }
 
     /**
-     * Return the generated manager for this provider.
-     *
-     * @return object
-     */
-    public static function getManager(): object
-    {
-        if (\is_null(static::$manager)) {
-            static::generateManager();
-        }
+    *
+    * @return IsALaramoreManager
+    */
+   public static function getManager(): IsALaramoreManager
+   {
+       $appHash = \spl_object_hash(app());
 
-        return static::$manager;
+       if (!isset(static::$managers[$appHash])) {
+           return static::generateManager($appHash);
+       }
+
+        return static::$managers[$appHash];
     }
 
     /**
