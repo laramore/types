@@ -87,16 +87,16 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
     }
 
     /**
-    *
-    * @return IsALaramoreManager
-    */
-   public static function getManager(): IsALaramoreManager
-   {
-       $appHash = \spl_object_hash(app());
+     *
+     * @return IsALaramoreManager
+     */
+    public static function getManager(): IsALaramoreManager
+    {
+        $appHash = \spl_object_hash(app());
 
-       if (!isset(static::$managers[$appHash])) {
-           return static::generateManager($appHash);
-       }
+        if (!isset(static::$managers[$appHash])) {
+            return static::generateManager($appHash);
+        }
 
         return static::$managers[$appHash];
     }

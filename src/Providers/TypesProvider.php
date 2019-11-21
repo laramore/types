@@ -81,7 +81,7 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
         $manager->define('default_rules', ['visible', 'fillable', 'required']);
         $manager->set(static::getDefaults());
 
-		return $manager;
+        return $manager;
     }
 
     /**

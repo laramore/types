@@ -110,7 +110,7 @@ class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvide
             }
         }
 
-		return $manager;
+        return $manager;
     }
 
     /**

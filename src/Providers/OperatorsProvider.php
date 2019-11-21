@@ -81,7 +81,7 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
         $manager->set(static::getDefaults());
         $manager->define('needs', 'value');
 
-		return $manager;
+        return $manager;
     }
 
     /**
