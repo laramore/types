@@ -80,11 +80,8 @@ return [
         'accept_username' => [
             'description' => 'Accept to have only a username instead of a full definition (email)',
         ],
-        'only_same_cdn' => [
-            'description' => 'Only accepts a range of cdn',
-        ],
-        'caracter_resize' => [
-            'description' => 'Cut the value at the decided length',
+        'restrict_domains' => [
+            'description' => 'Only accept a range of domains',
         ],
         'caracter_resize' => [
             'description' => 'Cut the value at the decided length',

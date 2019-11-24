@@ -67,7 +67,7 @@ return [
             ],
         ],
         'unsigned_integer' => [
-            'native' => 'integer',
+            'native' => 'unsigned integer',
             'default_rules' => [
                 'visible', 'fillable', 'required', 'unsigned',
             ],
@@ -79,31 +79,31 @@ return [
             ],
         ],
         'password' => [
-            'native' => 'string',
+            'native' => 'password',
             'default_rules' => [
                 'fillable', 'required', 'need_lowercase', 'need_uppercase', 'need_number'
             ],
         ],
         'primary_id' => [
-            'native' => 'string',
+            'native' => 'primary id',
             'default_rules' => [
                 'visible', 'not_zero', 'unsigned', 'require_sign', 'not_nullable',
             ],
         ],
         'pattern' => [
-            'native' => 'string',
+            'native' => 'pattern',
             'default_rules' => [
                 'visible', 'fillable', 'required',
             ],
         ],
         'text' => [
-            'native' => 'string',
+            'native' => 'text',
             'default_rules' => [
                 'visible', 'fillable', 'required', 'not_blank',
             ],
         ],
         'timestamp' => [
-            'native' => 'string',
+            'native' => 'timestamp',
             'default_rules' => [
                 'visible', 'fillable', 'required',
             ],
