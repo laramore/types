@@ -11,7 +11,7 @@
 namespace Laramore\Traits\Field;
 
 use Laramore\Elements\Rule;
-use Rules;
+use Laramore\Facades\Rules;
 
 trait HasRules
 {

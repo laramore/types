@@ -10,7 +10,7 @@
 
 namespace Laramore\Elements;
 
-use Rules;
+use Laramore\Facades\Rules;
 
 class Rule extends BaseElement
 {

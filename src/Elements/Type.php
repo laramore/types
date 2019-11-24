@@ -10,8 +10,8 @@
 
 namespace Laramore\Elements;
 
+use Laramore\Facades\Rules;
 use Laramore\Interfaces\IsConfigurable;
-use Rules;
 
 class Type extends BaseElement implements IsConfigurable
 {
