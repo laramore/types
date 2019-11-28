@@ -38,7 +38,7 @@ return [
         'composite' => [
             'native' => 'composite',
             'default_rules' => [
-                'visible', 'fillable', 'required',
+                'visible', 'fillable',
             ],
         ],
         'email' => [
@@ -75,7 +75,7 @@ return [
         'link' => [
             'native' => 'link',
             'default_rules' => [
-                'visible', 'fillable', 'required',
+                'visible', 'fillable',
             ],
         ],
         'password' => [
