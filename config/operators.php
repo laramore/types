@@ -40,6 +40,7 @@ return [
             'needs' => 'null',
         ],
         'not_null' => [
+            'native' => 'not null',
             'needs' => 'null',
         ],
         'is_not_null' => [

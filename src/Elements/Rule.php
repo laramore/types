@@ -12,7 +12,7 @@ namespace Laramore\Elements;
 
 use Laramore\Facades\Rules;
 
-class Rule extends BaseElement
+class Rule extends Element
 {
     /**
      * Define all rules to add if this rule is added.
@@ -25,7 +25,11 @@ class Rule extends BaseElement
         $this->needsToBeUnlocked();
 
         $this->values['adds'] = \array_map(function ($rule) {
-            return \is_string($rule) ? Rules::getOrCreate($rule) : $rule;
+            if (\is_string($rule)) {
+                return Rules::has($rule) ? Rules::get($rule) : Rules::create($rule);
+            } else {
+                return $rule;
+            }
         }, $rules);
 
         return $this;
@@ -42,7 +46,11 @@ class Rule extends BaseElement
         $this->needsToBeUnlocked();
 
         $this->values['removes'] = \array_map(function ($rule) {
-            return \is_string($rule) ? Rules::getOrCreate($rule) : $rule;
+            if (\is_string($rule)) {
+                return Rules::has($rule) ? Rules::get($rule) : Rules::create($rule);
+            } else {
+                return $rule;
+            }
         }, $rules);
 
         return $this;

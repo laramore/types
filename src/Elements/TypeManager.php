@@ -12,7 +12,7 @@ namespace Laramore\Elements;
 
 use Laramore\Interfaces\IsALaramoreManager;
 
-class TypeManager extends BaseManager implements IsALaramoreManager
+class TypeManager extends ElementManager implements IsALaramoreManager
 {
     protected $elementClass = Type::class;
 }

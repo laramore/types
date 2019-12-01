@@ -12,7 +12,7 @@ namespace Laramore\Elements;
 
 use Laramore\Interfaces\IsALaramoreManager;
 
-class RuleManager extends BaseManager implements IsALaramoreManager
+class RuleManager extends ElementManager implements IsALaramoreManager
 {
     protected $elementClass = Rule::class;
 }

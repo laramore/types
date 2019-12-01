@@ -13,7 +13,7 @@ namespace Laramore\Elements;
 use Laramore\Facades\Rules;
 use Laramore\Interfaces\IsConfigurable;
 
-class Type extends BaseElement implements IsConfigurable
+class Type extends Element implements IsConfigurable
 {
     /**
      * Return the configuration path for this field.
@@ -68,7 +68,11 @@ class Type extends BaseElement implements IsConfigurable
         $this->needsToBeUnlocked();
 
         $this->values['default_rules'] = \array_map(function ($rule) {
-            return \is_string($rule) ? Rules::getOrCreate($rule) : $rule;
+            if (\is_string($rule)) {
+                return Rules::has($rule) ? Rules::get($rule) : Rules::create($rule);
+            } else {
+                return $rule;
+            }
         }, $rules);
 
         return $this;

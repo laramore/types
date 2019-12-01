@@ -12,7 +12,7 @@ namespace Laramore\Elements;
 
 use Laramore\Interfaces\IsALaramoreManager;
 
-class OperatorManager extends BaseManager implements IsALaramoreManager
+class OperatorManager extends ElementManager implements IsALaramoreManager
 {
     protected $elementClass = Operator::class;
 }

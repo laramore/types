@@ -10,15 +10,6 @@
 
 namespace Laramore\Elements;
 
-class Operator extends BaseElement
+class Operator extends Element
 {
-    /**
-     * Return the element native value.
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->get('native');
-    }
 }
