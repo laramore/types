@@ -15,13 +15,10 @@ use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
 use Laramore\Exceptions\ConfigException;
-use Laramore\Traits\Provider\MergesConfig;
 use ReflectionNamespace;
 
 class GrammarTypesProvider extends ServiceProvider implements IsALaramoreProvider
 {
-    use MergesConfig;
-
     /**
      * Type manager.
      *

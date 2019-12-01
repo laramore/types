@@ -14,12 +14,9 @@ use Illuminate\Support\ServiceProvider;
 use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
-use Laramore\Traits\Provider\MergesConfig;
 
 class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
 {
-    use MergesConfig;
-
     /**
      * Type manager.
      *
