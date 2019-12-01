@@ -1,6 +1,6 @@
 <?php
 /**
- * Add rule management for fields.
+ * Add rule management.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -8,7 +8,7 @@
  * @license MIT
  */
 
-namespace Laramore\Traits\Field;
+namespace Laramore\Traits;
 
 use Laramore\Elements\Rule;
 use Laramore\Facades\Rules;
@@ -16,7 +16,7 @@ use Laramore\Facades\Rules;
 trait HasRules
 {
     /**
-     * All rules for this field.
+     * All rules defined for the object.
      *
      * @var array
      */
