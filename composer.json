@@ -10,7 +10,7 @@
    },
     "require": {
         "php": ">=7.0.8",
-        "nastuzzi-samy/reflection-namespace": "^1.0",
+        "nastuzzi-samy/reflection-namespace": ">=1.0",
         "laramore/base": "^0.2.0"
     },
     "suggest": {
@@ -36,7 +36,7 @@
             "./vendor/bin/phpcbf src"
         ],
         "test:unit": [
-            "vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
+            "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
         ],
         "test": [
             "@composer test:lint",
@@ -44,10 +44,10 @@
         ]
     },
     "require-dev": {
-        "phpmd/phpmd": "^2.7",
-        "squizlabs/php_codesniffer": "^3.5",
-        "phpstan/phpstan": "^0.9.2",
-        "phpunit/phpunit": "^6.5"
+        "phpmd/phpmd": ">=2.7",
+        "squizlabs/php_codesniffer": ">=3.5",
+        "phpstan/phpstan": ">=0.9.2",
+        "phpunit/phpunit": ">=6.5"
     },
     "extra": {
         "laravel": {
