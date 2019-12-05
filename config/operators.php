@@ -63,26 +63,64 @@ return [
             'native' => 'not null',
             'needs' => 'null',
         ],
-        'equal' => '=',
-        'eq' => '=',
-        'inf' => '<',
-        'sup' => '>',
-        'inf_or_eq' => '<=',
-        'sup_or_eq' => '>=',
-        'safe_not_equal' => '<>',
-        'not_eq' => '!=',
-        'not_equal' => '!=',
-        'safe_equal' => '<=>',
-        'like' => 'like',
-        'like_binary' => 'like binary',
-        'not_nike' => 'not like',
-        'ilike' => 'ilike',
-        'not_ilike' => 'not ilike',
+        'equal' => [
+            'native' => '=',
+        ],
+        'eq' => [
+            'native' => '=',
+        ],
+        'inf' => [
+            'native' => '<',
+        ],
+        'sup' => [
+            'native' => '>',
+        ],
+        'inf_or_eq' => [
+            'native' => '<=',
+        ],
+        'sup_or_eq' => [
+            'native' => '>=',
+        ],
+        'safe_not_equal' => [
+            'native' => '<>',
+        ],
+        'not_eq' => [
+            'native' => '!=',
+        ],
+        'not_equal' => [
+            'native' => '!=',
+        ],
+        'safe_equal' => [
+            'native' => '<=>',
+        ],
+        'like' => [
+            'native' => 'like',
+        ],
+        'like_binary' => [
+            'native' => 'like binary',
+        ],
+        'not_nike' => [
+            'native' => 'not like',
+        ],
+        'ilike' => [
+            'native' => 'ilike',
+        ],
+        'not_ilike' => [
+            'native' => 'not ilike',
+        ],
         'rlike', 'rlike',
-        'regexp' => 'regexp',
-        'not_regexp' => 'not regexp',
-        'similar_to' => 'similar to',
-        'not_timilar_to' => 'not similar to',
+        'regexp' => [
+            'native' => 'regexp',
+        ],
+        'not_regexp' => [
+            'native' => 'not regexp',
+        ],
+        'similar_to' => [
+            'native' => 'similar to',
+        ],
+        'not_timilar_to' => [
+            'native' => 'not similar to',
+        ],
         'bitand' => [
             'native' => '&',
             'needs' => 'binary',
@@ -103,14 +141,30 @@ return [
             'native' => '>>',
             'needs' => 'binary',
         ],
-        'match' => '~',
-        'imatch' => '~*',
-        'not_match' => '!~',
-        'not_imatch' => '!~*',
-        'same' => '~~',
-        'isame' => '~~*',
-        'not_same' => '!~~',
-        'not_isame' => '!~~*',
+        'match' => [
+            'native' => '~',
+        ],
+        'imatch' => [
+            'native' => '~*',
+        ],
+        'not_match' => [
+            'native' => '!~',
+        ],
+        'not_imatch' => [
+            'native' => '!~*',
+        ],
+        'same' => [
+            'native' => '~~',
+        ],
+        'isame' => [
+            'native' => '~~*',
+        ],
+        'not_same' => [
+            'native' => '!~~',
+        ],
+        'not_isame' => [
+            'native' => '!~~*',
+        ],
         'in' => [
             'native' => 'in',
             'needs' => 'collection'

@@ -11,12 +11,15 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laramore\Traits\Provider\MergesConfig;
 use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
 
 class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
 {
+    use MergesConfig;
+
     /**
      * Type manager.
      *

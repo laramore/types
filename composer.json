@@ -10,7 +10,6 @@
    },
     "require": {
         "php": ">=7.0.8",
-        "nastuzzi-samy/reflection-namespace": ">=1.0",
         "laramore/base": "^0.2.0"
     },
     "suggest": {
