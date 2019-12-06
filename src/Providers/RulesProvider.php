@@ -64,7 +64,7 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return config('rules.configurations');
+        return \array_filter(config('rules.configurations'));
     }
 
     /**

@@ -64,7 +64,7 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return config('operators.configurations');
+        return \array_filter(config('operators.configurations'));
     }
 
     /**

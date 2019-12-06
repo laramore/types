@@ -108,7 +108,9 @@ return [
         'not_ilike' => [
             'native' => 'not ilike',
         ],
-        'rlike', 'rlike',
+        'rlike' => [
+            'native' => 'rlike',
+        ],
         'regexp' => [
             'native' => 'regexp',
         ],

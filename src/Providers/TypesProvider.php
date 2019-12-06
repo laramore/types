@@ -64,7 +64,7 @@ class TypesProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return config('types.configurations');
+        return \array_filter(config('types.configurations'));
     }
 
     /**
