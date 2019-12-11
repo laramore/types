@@ -35,15 +35,7 @@ return [
         'null' => [
             'needs' => 'null',
         ],
-        'is_null' => [
-            'native' => 'null',
-            'needs' => 'null',
-        ],
         'not_null' => [
-            'native' => 'not null',
-            'needs' => 'null',
-        ],
-        'is_not_null' => [
             'native' => 'not null',
             'needs' => 'null',
         ],
@@ -75,10 +67,10 @@ return [
         'sup' => [
             'native' => '>',
         ],
-        'inf_or_eq' => [
+        'inf_eq' => [
             'native' => '<=',
         ],
-        'sup_or_eq' => [
+        'sup_eq' => [
             'native' => '>=',
         ],
         'safe_not_equal' => [
@@ -88,6 +80,9 @@ return [
             'native' => '!=',
         ],
         'not_equal' => [
+            'native' => '!=',
+        ],
+        'different' => [
             'native' => '!=',
         ],
         'safe_equal' => [
