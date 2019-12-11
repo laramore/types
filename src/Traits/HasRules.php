@@ -51,7 +51,7 @@ trait HasRules
             $this->rules[$rule->getName()] = $rule;
 
             foreach ($rule->adds as $add) {
-                $this->removeRule($add);
+                $this->addRule($add);
             }
 
             foreach ($rule->removes as $remove) {
