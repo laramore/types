@@ -1,6 +1,7 @@
 <?php
 /**
- * Add a facade for the Operators.
+ * Add a facade for the manager Operator.
+ * Simple access to operators.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -12,7 +13,7 @@ namespace Laramore\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Operators extends Facade
+class Operator extends Facade
 {
     /**
      * Give the name of the accessor.
@@ -21,6 +22,6 @@ class Operators extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Operators';
+        return 'Operator';
     }
 }

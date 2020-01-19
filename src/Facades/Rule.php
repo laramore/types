@@ -1,6 +1,7 @@
 <?php
 /**
- * Add a facade for the Rules.
+ * Add a facade for the manager Rule.
+ * All rules are managed by this manager.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -12,7 +13,7 @@ namespace Laramore\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Rules extends Facade
+class Rule extends Facade
 {
     /**
      * Give the name of the accessor.
@@ -21,6 +22,6 @@ class Rules extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Rules';
+        return 'Rule';
     }
 }

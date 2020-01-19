@@ -1,6 +1,6 @@
 <?php
 /**
- * Load and prepare Models.
+ * Prepare type manager.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -16,7 +16,7 @@ use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
 
-class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
+class TypeProvider extends ServiceProvider implements IsALaramoreProvider
 {
     use MergesConfig;
 
@@ -28,17 +28,17 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
     protected static $managers;
 
     /**
-     * Create the OperatorManager and lock it after booting.
+     * Register our facade and create the manager.
      *
      * @return void
      */
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/operators.php', 'operators',
+            __DIR__.'/../../config/type.php', 'type',
         );
 
-        $this->app->singleton('Operators', function() {
+        $this->app->singleton('Type', function() {
             return static::getManager();
         });
 
@@ -53,7 +53,7 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/operators.php' => config_path('operators.php'),
+            __DIR__.'/../../config/type.php' => config_path('type.php'),
         ]);
     }
 
@@ -64,7 +64,7 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return \array_filter(config('operators.configurations'));
+        return \array_filter(config('type.configurations'));
     }
 
     /**
@@ -75,11 +75,11 @@ class OperatorsProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function generateManager(string $key): IsALaramoreManager
     {
-        $class = config('operators.manager');
+        $class = config('type.manager');
 
         static::$managers[$key] = $manager = new $class();
+        $manager->define('default_rules', ['visible', 'fillable', 'required']);
         $manager->set(static::getDefaults());
-        $manager->define('needs', 'value');
 
         return $manager;
     }

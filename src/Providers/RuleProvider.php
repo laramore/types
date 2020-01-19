@@ -16,7 +16,7 @@ use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
 
-class RulesProvider extends ServiceProvider implements IsALaramoreProvider
+class RuleProvider extends ServiceProvider implements IsALaramoreProvider
 {
     use MergesConfig;
 
@@ -35,10 +35,10 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/rules.php', 'rules',
+            __DIR__.'/../../config/rule.php', 'rule',
         );
 
-        $this->app->singleton('Rules', function() {
+        $this->app->singleton('Rule', function() {
             return static::getManager();
         });
 
@@ -53,7 +53,7 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/rules.php' => config_path('rules.php'),
+            __DIR__.'/../../config/rule.php' => config_path('rule.php'),
         ]);
     }
 
@@ -64,7 +64,7 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return \array_filter(config('rules.configurations'));
+        return \array_filter(config('rule.configurations'));
     }
 
     /**
@@ -75,7 +75,7 @@ class RulesProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function generateManager(string $key): IsALaramoreManager
     {
-        $class = config('rules.manager');
+        $class = config('rule.manager');
 
         static::$managers[$key] = $manager = new $class();
 

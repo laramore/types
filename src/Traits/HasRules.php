@@ -10,8 +10,8 @@
 
 namespace Laramore\Traits;
 
-use Laramore\Elements\Rule;
-use Laramore\Facades\Rules;
+use Laramore\Elements\Rule as RuleElement;
+use Laramore\Facades\Rule;
 
 trait HasRules
 {
@@ -25,18 +25,18 @@ trait HasRules
     /**
      * Indicate if the resource has a rule.
      *
-     * @param  string|Rule $rule
+     * @param  string|RuleElement $rule
      * @return boolean
      */
     public function hasRule($rule)
     {
-        return isset($this->rules[$rule instanceof Rule ? $rule->getName() : $rule]);
+        return isset($this->rules[$rule instanceof RuleElement ? $rule->getName() : $rule]);
     }
 
     /**
      * Add a rule to the resource.
      *
-     * @param string|Rule $rule
+     * @param string|RuleElement $rule
      * @return self
      */
     protected function addRule($rule)
@@ -44,7 +44,7 @@ trait HasRules
         $this->needsToBeUnlocked();
 
         if (\is_string($rule)) {
-            $rule = Rules::get($rule);
+            $rule = Rule::get($rule);
         }
 
         if (!$this->hasRule($rule)) {
@@ -80,7 +80,7 @@ trait HasRules
     /**
      * Remove a rule from the resource.
      *
-     * @param  string|Rule $rule
+     * @param  string|RuleElement $rule
      * @return self
      */
     protected function removeRule($rule)
@@ -88,7 +88,7 @@ trait HasRules
         $this->needsToBeUnlocked();
 
         if ($this->hasRule($rule)) {
-            unset($this->rules[$rule instanceof Rule ? $rule->getName() : $rule]);
+            unset($this->rules[$rule instanceof RuleElement ? $rule->getName() : $rule]);
         }
 
         return $this;

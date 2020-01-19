@@ -24,14 +24,14 @@ return [
 
     'configurations' => [
         'nullable' => [
-            'description' => 'Set the value as nullable by default',
+            'description' => 'Nullable value by default',
             'removes' => [
                 'not_nullable',
             ],
         ],
         'not_nullable' => [
             'native' => 'not nullable',
-            'description' => 'Forbid to be nullable',
+            'description' => 'Cannot be nullable',
             'removes' => [
                 'nullable',
             ],

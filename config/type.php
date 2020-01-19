@@ -19,6 +19,9 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option defines the default types used by fields.
+    | A field has a type. The type describes its default rules,
+    | its required type value. Also, other packages can define
+    | the field factory type, its migration type, etc.
     |
     */
 
