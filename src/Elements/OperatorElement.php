@@ -1,6 +1,6 @@
 <?php
 /**
- * Define a specific field rule element.
+ * Define an operator for SQL operations.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -10,8 +10,6 @@
 
 namespace Laramore\Elements;
 
-use Laramore\Facades\Rules;
-
-class Rule extends Element
+class OperatorElement extends Element
 {
 }

@@ -10,9 +10,7 @@
 
 namespace Laramore\Elements;
 
-use Laramore\Facades\Rules;
-
-class Type extends Element
+class TypeElement extends Element
 {
     /**
      * Tell if a value is of the right type.

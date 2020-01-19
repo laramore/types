@@ -14,5 +14,5 @@ use Laramore\Interfaces\IsALaramoreManager;
 
 class RuleManager extends ElementManager implements IsALaramoreManager
 {
-    protected $elementClass = Rule::class;
+    protected $elementClass = RuleElement::class;
 }

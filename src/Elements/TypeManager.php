@@ -14,5 +14,5 @@ use Laramore\Interfaces\IsALaramoreManager;
 
 class TypeManager extends ElementManager implements IsALaramoreManager
 {
-    protected $elementClass = Type::class;
+    protected $elementClass = TypeElement::class;
 }

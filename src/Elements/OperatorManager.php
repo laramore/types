@@ -14,5 +14,5 @@ use Laramore\Interfaces\IsALaramoreManager;
 
 class OperatorManager extends ElementManager implements IsALaramoreManager
 {
-    protected $elementClass = Operator::class;
+    protected $elementClass = OperatorElement::class;
 }
