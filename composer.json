@@ -13,7 +13,7 @@
         "laramore/base": "v0.3.2"
     },
     "suggest": {
-        "laramore/laramore": "Laramore\\Base is made in order to work with Laramore"
+        "laramore/laramore": "Laramore\\Types is made in order to work with Laramore"
     },
     "authors": [
         {
@@ -56,9 +56,9 @@
                 "Laramore\\Providers\\OperatorProvider"
             ],
             "aliases": {
-                "Rules": "Laramore\\Facades\\Rule",
-                "Types": "Laramore\\Facades\\Type",
-                "Operators": "Laramore\\Facades\\Operator",
+                "Rule": "Laramore\\Facades\\Rule",
+                "Type": "Laramore\\Facades\\Type",
+                "Operator": "Laramore\\Facades\\Operator",
                 "Op": "Laramore\\Facades\\Operator"
             }
         }
