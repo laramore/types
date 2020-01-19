@@ -11,21 +11,16 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Container\Container;
 use Laramore\Traits\Provider\MergesConfig;
 use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
+use Laramore\Facades\Operator;
 
 class OperatorProvider extends ServiceProvider implements IsALaramoreProvider
 {
     use MergesConfig;
-
-    /**
-     * Type manager.
-     *
-     * @var array
-     */
-    protected static $managers;
 
     /**
      * Create the OperatorManager and lock it after booting.
@@ -38,8 +33,8 @@ class OperatorProvider extends ServiceProvider implements IsALaramoreProvider
             __DIR__.'/../../config/operator.php', 'operator',
         );
 
-        $this->app->singleton('Operator', function() {
-            return static::getManager();
+        $this->app->singleton('operator', function() {
+            return static::generateManager();
         });
 
         $this->app->booted([$this, 'bootedCallback']);
@@ -53,7 +48,7 @@ class OperatorProvider extends ServiceProvider implements IsALaramoreProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/operator.php' => config_path('operator.php'),
+            __DIR__.'/../../config/operator.php' => $this->app->make('path.config').DIRECTORY_SEPARATOR.'operator.php',
         ]);
     }
 
@@ -64,40 +59,23 @@ class OperatorProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return \array_filter(config('operator.configurations'));
+        return \array_filter(Container::getInstance()->config->get('operator.configurations'));
     }
 
     /**
      * Generate the corresponded manager.
      *
-     * @param  string $key
      * @return IsALaramoreManager
      */
-    public static function generateManager(string $key): IsALaramoreManager
+    public static function generateManager(): IsALaramoreManager
     {
-        $class = config('operator.manager');
+        $class = Container::getInstance()->config->get('operator.manager');
 
-        static::$managers[$key] = $manager = new $class();
+        $manager = new $class();
         $manager->set(static::getDefaults());
         $manager->define('needs', 'value');
 
         return $manager;
-    }
-
-    /**
-     * Return the generated manager for this provider.
-     *
-     * @return IsALaramoreManager
-     */
-    public static function getManager(): IsALaramoreManager
-    {
-        $appHash = \spl_object_hash(app());
-
-        if (!isset(static::$managers[$appHash])) {
-            return static::generateManager($appHash);
-        }
-
-        return static::$managers[$appHash];
     }
 
     /**
@@ -107,6 +85,6 @@ class OperatorProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public function bootedCallback()
     {
-        static::getManager()->lock();
+        Operator::lock();
     }
 }

@@ -22,6 +22,6 @@ class Operator extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Operator';
+        return 'operator';
     }
 }

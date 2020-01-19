@@ -2,16 +2,15 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Laramore\Exceptions\LockException;
 use Laramore\Elements\{
-    Type, TypeManager, Element, ElementManager
+    TypeElement, TypeManager, Element, ElementManager
 };
 
 final class TypeTest extends TestCase
 {
     public function testRuleClass()
     {
-        $operator = new Type('name', 'native');
+        $operator = new TypeElement('name', 'native');
 
         $this->assertTrue($operator instanceof Element);
     }
@@ -22,7 +21,7 @@ final class TypeTest extends TestCase
 
         $this->assertTrue($manager instanceof ElementManager);
 
-        $manager->set(new Type('name', 'native'));
+        $manager->set(new TypeElement('name', 'native'));
     }
 
     public function testWrongType()

@@ -2,16 +2,15 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Laramore\Exceptions\LockException;
 use Laramore\Elements\{
-    Operator, OperatorManager, Element, ElementManager
+    OperatorElement, OperatorManager, Element, ElementManager
 };
 
 final class OperatorTest extends TestCase
 {
     public function testOperatorClass()
     {
-        $operator = new Operator('name', 'native');
+        $operator = new OperatorElement('name', 'native');
 
         $this->assertTrue($operator instanceof Element);
     }
@@ -22,7 +21,7 @@ final class OperatorTest extends TestCase
 
         $this->assertTrue($manager instanceof ElementManager);
 
-        $manager->set(new Operator('name', 'native'));
+        $manager->set(new OperatorElement('name', 'native'));
     }
 
     public function testWrongOperator()

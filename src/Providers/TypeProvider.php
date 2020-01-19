@@ -11,21 +11,16 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Container\Container;
 use Laramore\Traits\Provider\MergesConfig;
 use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
+use Laramore\Facades\Type;
 
 class TypeProvider extends ServiceProvider implements IsALaramoreProvider
 {
     use MergesConfig;
-
-    /**
-     * Type manager.
-     *
-     * @var array
-     */
-    protected static $managers;
 
     /**
      * Register our facade and create the manager.
@@ -38,8 +33,8 @@ class TypeProvider extends ServiceProvider implements IsALaramoreProvider
             __DIR__.'/../../config/type.php', 'type',
         );
 
-        $this->app->singleton('Type', function() {
-            return static::getManager();
+        $this->app->singleton('type', function() {
+            return static::generateManager();
         });
 
         $this->app->booted([$this, 'bootedCallback']);
@@ -53,7 +48,7 @@ class TypeProvider extends ServiceProvider implements IsALaramoreProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/type.php' => config_path('type.php'),
+            __DIR__.'/../../config/type.php' => $this->app->make('path.config').DIRECTORY_SEPARATOR.'type.php',
         ]);
     }
 
@@ -64,40 +59,23 @@ class TypeProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return \array_filter(config('type.configurations'));
+        return \array_filter(Container::getInstance()->config->get('type.configurations'));
     }
 
     /**
      * Generate the corresponded manager.
      *
-     * @param  string $key
      * @return IsALaramoreManager
      */
-    public static function generateManager(string $key): IsALaramoreManager
+    public static function generateManager(): IsALaramoreManager
     {
-        $class = config('type.manager');
+        $class = Container::getInstance()->config->get('type.manager');
 
-        static::$managers[$key] = $manager = new $class();
-        $manager->define('default_rules', ['visible', 'fillable', 'required']);
+        $manager = new $class();
         $manager->set(static::getDefaults());
+        $manager->define('default_rules', ['visible', 'fillable', 'required']);
 
         return $manager;
-    }
-
-    /**
-     * Return the generated manager for this provider.
-     *
-     * @return IsALaramoreManager
-     */
-    public static function getManager(): IsALaramoreManager
-    {
-        $appHash = \spl_object_hash(app());
-
-        if (!isset(static::$managers[$appHash])) {
-            return static::generateManager($appHash);
-        }
-
-        return static::$managers[$appHash];
     }
 
     /**
@@ -107,6 +85,6 @@ class TypeProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public function bootedCallback()
     {
-        static::getManager()->lock();
+        Type::lock();
     }
 }

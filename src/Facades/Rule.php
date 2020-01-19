@@ -22,6 +22,6 @@ class Rule extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Rule';
+        return 'rule';
     }
 }

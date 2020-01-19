@@ -10,7 +10,7 @@
    },
     "require": {
         "php": ">=7.0.8",
-        "laramore/base": "^0.2.0"
+        "laramore/base": "v0.3.2"
     },
     "suggest": {
         "laramore/laramore": "Laramore\\Base is made in order to work with Laramore"
@@ -51,15 +51,15 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Laramore\\Providers\\RulesProvider",
-                "Laramore\\Providers\\TypesProvider",
-                "Laramore\\Providers\\OperatorsProvider"
+                "Laramore\\Providers\\RuleProvider",
+                "Laramore\\Providers\\TypeProvider",
+                "Laramore\\Providers\\OperatorProvider"
             ],
             "aliases": {
-                "Rules": "Laramore\\Facades\\Rules",
-                "Types": "Laramore\\Facades\\Types",
-                "Operators": "Laramore\\Facades\\Operators",
-                "Op": "Laramore\\Facades\\Operators"
+                "Rules": "Laramore\\Facades\\Rule",
+                "Types": "Laramore\\Facades\\Type",
+                "Operators": "Laramore\\Facades\\Operator",
+                "Op": "Laramore\\Facades\\Operator"
             }
         }
     }

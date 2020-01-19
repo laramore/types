@@ -22,6 +22,6 @@ class Type extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Type';
+        return 'type';
     }
 }

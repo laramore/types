@@ -10,7 +10,7 @@
 
 namespace Laramore\Traits;
 
-use Laramore\Elements\Rule as RuleElement;
+use Laramore\Elements\RuleElement;
 use Laramore\Facades\Rule;
 
 trait HasRules

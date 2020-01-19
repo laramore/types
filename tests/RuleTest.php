@@ -2,16 +2,15 @@
 declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
-use Laramore\Exceptions\LockException;
 use Laramore\Elements\{
-    Rule, RuleManager, Element, ElementManager
+    RuleElement, RuleManager, Element, ElementManager
 };
 
 final class RuleTest extends TestCase
 {
     public function testRuleClass()
     {
-        $operator = new Rule('name', 'native');
+        $operator = new RuleElement('name', 'native');
 
         $this->assertTrue($operator instanceof Element);
     }
@@ -22,7 +21,7 @@ final class RuleTest extends TestCase
 
         $this->assertTrue($manager instanceof ElementManager);
 
-        $manager->set(new Rule('name', 'native'));
+        $manager->set(new RuleElement('name', 'native'));
     }
 
     public function testWrongRule()

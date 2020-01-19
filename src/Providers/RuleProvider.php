@@ -11,21 +11,16 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Container\Container;
 use Laramore\Traits\Provider\MergesConfig;
 use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
+use Laramore\Facades\Rule;
 
 class RuleProvider extends ServiceProvider implements IsALaramoreProvider
 {
     use MergesConfig;
-
-    /**
-     * Rule manager.
-     *
-     * @var array
-     */
-    protected static $managers;
 
     /**
      * Register our facade and create the manager.
@@ -38,8 +33,8 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
             __DIR__.'/../../config/rule.php', 'rule',
         );
 
-        $this->app->singleton('Rule', function() {
-            return static::getManager();
+        $this->app->singleton('rule', function() {
+            return static::generateManager();
         });
 
         $this->app->booted([$this, 'bootedCallback']);
@@ -53,7 +48,7 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/rule.php' => config_path('rule.php'),
+            __DIR__.'/../../config/rule.php' => $this->app->make('path.config').DIRECTORY_SEPARATOR.'rule.php',
         ]);
     }
 
@@ -64,41 +59,24 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return \array_filter(config('rule.configurations'));
+        return \array_filter(Container::getInstance()->config->get('rule.configurations'));
     }
 
     /**
      * Generate the corresponded manager.
      *
-     * @param  string $key
      * @return IsALaramoreManager
      */
-    public static function generateManager(string $key): IsALaramoreManager
+    public static function generateManager(): IsALaramoreManager
     {
-        $class = config('rule.manager');
+        $class = Container::getInstance()->config->get('rule.manager');
 
-        static::$managers[$key] = $manager = new $class();
-
+        $manager = new $class();
+        $manager->set(static::getDefaults());
         $manager->define('adds', []);
         $manager->define('removes', []);
-        $manager->set(static::getDefaults());
 
         return $manager;
-    }
-
-    /**
-     *
-     * @return IsALaramoreManager
-     */
-    public static function getManager(): IsALaramoreManager
-    {
-        $appHash = \spl_object_hash(app());
-
-        if (!isset(static::$managers[$appHash])) {
-            return static::generateManager($appHash);
-        }
-
-        return static::$managers[$appHash];
     }
 
     /**
@@ -108,6 +86,6 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public function bootedCallback()
     {
-        static::getManager()->lock();
+        Rule::lock();
     }
 }
