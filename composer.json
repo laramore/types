@@ -1,6 +1,6 @@
 {
     "name": "laramore/types",
-    "description": "All default types used by Laramore",
+    "description": "All based instances and interfaces used by Laramore",
     "keywords": ["Laramore", "Laravel", "Model", "Automatic", "Auto", "Fields", "Field", "Meta", "Types"],
     "license": "MIT",
     "config": {
@@ -10,7 +10,7 @@
    },
     "require": {
         "php": ">=7.0.8",
-        "laramore/base": "v0.3.2"
+        "laramore/base": "^0.3.3"
     },
     "suggest": {
         "laramore/laramore": "Laramore\\Types is made in order to work with Laramore"
