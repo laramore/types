@@ -4,21 +4,21 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Rule manager
+    | Option manager
     |--------------------------------------------------------------------------
     |
-    | This option defines the class that will manage all rules.
+    | This option defines the class that will manage all options.
     |
     */
 
-    'manager' => Laramore\Elements\RuleManager::class,
+    'manager' => Laramore\Elements\OptionManager::class,
 
     /*
     |--------------------------------------------------------------------------
-    | Default rules
+    | Default options
     |--------------------------------------------------------------------------
     |
-    | This option defines the default rules used in fields.
+    | This option defines the default options used in fields.
     |
     */
 

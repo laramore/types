@@ -3,30 +3,30 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 use Laramore\Elements\{
-    TypeElement, TypeManager, Element, ElementManager
+    OptionElement, OptionManager, Element, ElementManager
 };
 
-final class TypeTest extends TestCase
+final class OptionTest extends TestCase
 {
     public function testOptionClass()
     {
-        $operator = new TypeElement('name', 'native');
+        $operator = new OptionElement('name', 'native');
 
         $this->assertTrue($operator instanceof Element);
     }
 
     public function testOptionManagerClass()
     {
-        $manager = new TypeManager();
+        $manager = new OptionManager();
 
         $this->assertTrue($manager instanceof ElementManager);
 
-        $manager->set(new TypeElement('name', 'native'));
+        $manager->set(new OptionElement('name', 'native'));
     }
 
-    public function testWrongType()
+    public function testWrongOption()
     {
-        $manager = new TypeManager();
+        $manager = new OptionManager();
 
         $this->expectException(ErrorException::class);
 

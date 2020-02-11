@@ -16,9 +16,9 @@ use Laramore\Traits\Provider\MergesConfig;
 use Laramore\Interfaces\{
 	IsALaramoreManager, IsALaramoreProvider
 };
-use Laramore\Facades\Rule;
+use Laramore\Facades\Option;
 
-class RuleProvider extends ServiceProvider implements IsALaramoreProvider
+class OptionProvider extends ServiceProvider implements IsALaramoreProvider
 {
     use MergesConfig;
 
@@ -30,10 +30,10 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../../config/rule.php', 'rule',
+            __DIR__.'/../../config/option.php', 'option',
         );
 
-        $this->app->singleton('rule', function() {
+        $this->app->singleton('option', function() {
             return static::generateManager();
         });
 
@@ -48,7 +48,7 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/rule.php' => $this->app->make('path.config').DIRECTORY_SEPARATOR.'rule.php',
+            __DIR__.'/../../config/option.php' => $this->app->make('path.config').DIRECTORY_SEPARATOR.'option.php',
         ]);
     }
 
@@ -59,7 +59,7 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return \array_filter(Container::getInstance()->config->get('rule.configurations'));
+        return \array_filter(Container::getInstance()->config->get('option.configurations'));
     }
 
     /**
@@ -69,7 +69,7 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public static function generateManager(): IsALaramoreManager
     {
-        $class = Container::getInstance()->config->get('rule.manager');
+        $class = Container::getInstance()->config->get('option.manager');
 
         $manager = new $class();
         $manager->set(static::getDefaults());
@@ -86,6 +86,6 @@ class RuleProvider extends ServiceProvider implements IsALaramoreProvider
      */
     public function bootedCallback()
     {
-        Rule::lock();
+        Option::lock();
     }
 }

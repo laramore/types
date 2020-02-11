@@ -1,6 +1,6 @@
 <?php
 /**
- * Define a specific field rule element.
+ * Define a specific field option element.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -10,6 +10,6 @@
 
 namespace Laramore\Elements;
 
-class RuleElement extends Element
+class OptionElement extends Element
 {
 }

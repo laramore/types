@@ -51,15 +51,14 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Laramore\\Providers\\RuleProvider",
+                "Laramore\\Providers\\OptionProvider",
                 "Laramore\\Providers\\TypeProvider",
                 "Laramore\\Providers\\OperatorProvider"
             ],
             "aliases": {
-                "Rule": "Laramore\\Facades\\Rule",
+                "Option": "Laramore\\Facades\\Option",
                 "Type": "Laramore\\Facades\\Type",
-                "Operator": "Laramore\\Facades\\Operator",
-                "Op": "Laramore\\Facades\\Operator"
+                "Operator": "Laramore\\Facades\\Operator"
             }
         }
     }

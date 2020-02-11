@@ -19,7 +19,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option defines the default types used by fields.
-    | A field has a type. The type describes its default rules,
+    | A field has a type. The type describes its default options,
     | its required type value. Also, other packages can define
     | the field factory type, its migration type, etc.
     |
@@ -28,86 +28,86 @@ return [
     'configurations' => [
         'boolean' => [
             'native' => 'bool',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required',
             ],
         ],
         'char' => [
             'native' => 'char',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required', 'caracter_resize',
             ],
         ],
         'composite' => [
             'native' => 'composite',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required',
             ],
         ],
         'email' => [
             'native' => 'email',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required', 'not_nullable',
             ],
         ],
         'enum' => [
             'native' => 'enum',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required',
             ],
         ],
         'increment' => [
             'native' => 'increment',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'not_zero', 'unsigned', 'require_sign',
             ],
         ],
         'integer' => [
             'native' => 'integer',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required',
 
             ],
         ],
         'unsigned_integer' => [
             'native' => 'unsigned integer',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required', 'unsigned',
             ],
         ],
         'link' => [
             'native' => 'link',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required',
             ],
         ],
         'password' => [
             'native' => 'password',
-            'default_rules' => [
+            'default_options' => [
                 'fillable', 'required', 'need_lowercase', 'need_uppercase', 'need_number'
             ],
         ],
         'primary_id' => [
             'native' => 'primary id',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'not_zero', 'unsigned', 'require_sign', 'not_nullable',
             ],
         ],
         'pattern' => [
             'native' => 'pattern',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required',
             ],
         ],
         'text' => [
             'native' => 'text',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required', 'not_blank',
             ],
         ],
         'timestamp' => [
             'native' => 'timestamp',
-            'default_rules' => [
+            'default_options' => [
                 'visible', 'fillable', 'required',
             ],
         ],

@@ -1,7 +1,7 @@
 <?php
 /**
- * Add a facade for the manager Rule.
- * All rules are managed by this manager.
+ * Add a facade for the manager Option.
+ * All options are managed by this manager.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -13,7 +13,7 @@ namespace Laramore\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Rule extends Facade
+class Option extends Facade
 {
     /**
      * Give the name of the accessor.
@@ -22,6 +22,6 @@ class Rule extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'rule';
+        return 'option';
     }
 }

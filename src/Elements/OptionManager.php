@@ -1,6 +1,6 @@
 <?php
 /**
- * Define a field rule manager used by Laramore.
+ * Define a field option manager used by Laramore.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -12,7 +12,7 @@ namespace Laramore\Elements;
 
 use Laramore\Interfaces\IsALaramoreManager;
 
-class RuleManager extends ElementManager implements IsALaramoreManager
+class OptionManager extends ElementManager implements IsALaramoreManager
 {
-    protected $elementClass = RuleElement::class;
+    protected $elementClass = OptionElement::class;
 }
