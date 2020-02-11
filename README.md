@@ -1,12 +1,12 @@
 # Laramore Types
 
-Define all types used by Laramore and its fields
+Define all basic types, options and operators used by Laramore and its fields
 
 
 # Installation
 ## Via composer
 
-In your PHP project, run `composer require laramore/fields`.
+In your PHP project, run `composer require laramore/types`.
 
 
 # Usage
@@ -19,13 +19,13 @@ Elements are a sort of enumeration. They are managed with no specific order and 
 
 ### Operator
 
-An operator represent an SQL operator in a simple way. They are callable by `Op::eq()` for example which represents a `=` operator.
+An operator represent an SQL operator in a simple way. They are callable by `Operator::equal()` for example which represents an `=` operator.
 
 Some operators can have constraints as a `nullable` value, a `collection` as value and so on.
 
 ### OperatorManager
 
-Manage all operators. Aliases `Op` or `Operators` are usefull to require a specific operator.
+Manage all operators. Alias `Operator` is usefull to require a specific operator.
 
 
 ### Type
@@ -34,19 +34,13 @@ Define a specific type. It is usefull to have the same one definition for a spec
 
 ### TypeManager
 
-Manager all types. Alias `Types` is usefull to get a specific type.
+Manager all types. Alias `Type` is usefull to get a specific type.
 
 
-## Grammars
+### Option
 
-### GrammarType
+Define a all option applied on fields. It is usefull to define a specific behavior for a field.
 
-Define a new grammar type. It is usefull to create for example a specific spacial field.
+### OptionManager
 
-### GrammarTypeHandler
-
-Handle new grammar types for a specific grammar. Grammar types could be different for MySQL and PostgreSQL.
-
-### GrammarTypeManager
-
-Handle all grammar type handler.
+Manager all options. Alias `Option` is usefull to get a specific option.
