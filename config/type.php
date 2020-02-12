@@ -35,7 +35,7 @@ return [
         'char' => [
             'native' => 'char',
             'default_options' => [
-                'visible', 'fillable', 'required', 'caracter_resize',
+                'visible', 'fillable', 'required',
             ],
         ],
         'composite' => [
@@ -78,7 +78,7 @@ return [
         'link' => [
             'native' => 'link',
             'default_options' => [
-                'visible', 'fillable', 'required',
+                'visible', 'fillable',
             ],
         ],
         'password' => [

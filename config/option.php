@@ -96,22 +96,6 @@ return [
             'native' => 'restrict domains',
             'description' => 'Only accept a range of domains',
         ],
-        'caracter_resize' => [
-            'native' => 'caractere resize',
-            'description' => 'Cut the value at the decided length',
-        ],
-        'word_resize' => [
-            'native' => 'word resize',
-            'description' => 'Cut the value at the decided length, without cutting a word',
-        ],
-        'sentence_resize' => [
-            'native' => 'sentence resize',
-            'description' => 'Cut the value at the decided length, without cutting a sentence',
-        ],
-        'dots_on_resize' => [
-            'native' => 'dots on resize',
-            'description' => 'Add dots if the value is cut',
-        ],
         'use_current' => [
             'native' => 'use current',
             'description' => 'Use the current value',
