@@ -1,6 +1,6 @@
 <?php
 /**
- * Prepare type manager.
+ * Load and prepare type manager.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -13,12 +13,12 @@ namespace Laramore\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Container\Container;
 use Laramore\Traits\Provider\MergesConfig;
-use Laramore\Interfaces\{
-	IsALaramoreManager, IsALaramoreProvider
+use Laramore\Contracts\{
+    Manager\LaramoreManager, Provider\LaramoreProvider
 };
 use Laramore\Facades\Type;
 
-class TypeProvider extends ServiceProvider implements IsALaramoreProvider
+class TypeProvider extends ServiceProvider implements LaramoreProvider
 {
     use MergesConfig;
 
@@ -65,9 +65,9 @@ class TypeProvider extends ServiceProvider implements IsALaramoreProvider
     /**
      * Generate the corresponded manager.
      *
-     * @return IsALaramoreManager
+     * @return LaramoreManager
      */
-    public static function generateManager(): IsALaramoreManager
+    public static function generateManager(): LaramoreManager
     {
         $class = Container::getInstance()->config->get('type.manager');
 

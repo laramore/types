@@ -10,9 +10,9 @@
 
 namespace Laramore\Elements;
 
-use Laramore\Interfaces\IsALaramoreManager;
+use Laramore\Contracts\Manager\LaramoreManager;
 
-class OperatorManager extends ElementManager implements IsALaramoreManager
+class OperatorManager extends ElementManager implements LaramoreManager
 {
     protected $elementClass = OperatorElement::class;
 }

@@ -10,9 +10,9 @@
 
 namespace Laramore\Elements;
 
-use Laramore\Interfaces\IsALaramoreManager;
+use Laramore\Contracts\Manager\LaramoreManager;
 
-class TypeManager extends ElementManager implements IsALaramoreManager
+class TypeManager extends ElementManager implements LaramoreManager
 {
     protected $elementClass = TypeElement::class;
 }

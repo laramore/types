@@ -1,6 +1,6 @@
 <?php
 /**
- * Load and prepare Models.
+ * Load and prepare operator manager.
  *
  * @author Samy Nastuzzi <samy@nastuzzi.fr>
  *
@@ -13,12 +13,12 @@ namespace Laramore\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Container\Container;
 use Laramore\Traits\Provider\MergesConfig;
-use Laramore\Interfaces\{
-	IsALaramoreManager, IsALaramoreProvider
+use Laramore\Contracts\{
+	Manager\LaramoreManager, Provider\LaramoreProvider
 };
 use Laramore\Facades\Operator;
 
-class OperatorProvider extends ServiceProvider implements IsALaramoreProvider
+class OperatorProvider extends ServiceProvider implements LaramoreProvider
 {
     use MergesConfig;
 
@@ -65,9 +65,9 @@ class OperatorProvider extends ServiceProvider implements IsALaramoreProvider
     /**
      * Generate the corresponded manager.
      *
-     * @return IsALaramoreManager
+     * @return LaramoreManager
      */
-    public static function generateManager(): IsALaramoreManager
+    public static function generateManager(): LaramoreManager
     {
         $class = Container::getInstance()->config->get('operator.manager');
 
