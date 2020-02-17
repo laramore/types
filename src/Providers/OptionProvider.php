@@ -37,7 +37,7 @@ class OptionProvider extends ServiceProvider implements LaramoreProvider
             return static::generateManager();
         });
 
-        $this->app->booted([$this, 'bootedCallback']);
+        $this->app->booted([$this, 'booted']);
     }
 
     /**
@@ -84,7 +84,7 @@ class OptionProvider extends ServiceProvider implements LaramoreProvider
      *
      * @return void
      */
-    public function bootedCallback()
+    public function booted()
     {
         Option::lock();
     }
