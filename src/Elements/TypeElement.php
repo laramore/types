@@ -12,22 +12,4 @@ namespace Laramore\Elements;
 
 class TypeElement extends Element
 {
-    /**
-     * Tell if a value is of the right type.
-     *
-     * @param  mixed $value
-     * @return boolean
-     */
-    public function isType($value): bool
-    {
-        $native = $this->get('native');
-
-        if ($native instanceof \Closure) {
-            return $native($value);
-        }
-
-        $type = "\is_$native";
-
-        return $type($value);
-    }
 }
