@@ -100,6 +100,22 @@ return [
             'native' => 'use current',
             'description' => 'Use the current value',
         ],
+        'with' => [
+            'native' => 'with',
+            'description' => 'Autoload the relation',
+            'propagate' => false,
+            'removes' => [
+                'with_count',
+            ],
+        ],
+        'with_count' => [
+            'native' => 'with count',
+            'description' => 'Autoload the number of the relation',
+            'propagate' => false,
+            'removes' => [
+                'with',
+            ],
+        ],
     ],
 
 ];

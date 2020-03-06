@@ -38,8 +38,8 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
-        'composite' => [
-            'native' => 'composite',
+        'composed' => [
+            'native' => 'composed',
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
