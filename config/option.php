@@ -100,8 +100,14 @@ return [
             'native' => 'use current',
             'description' => 'Use the current value',
         ],
+        'append' => [
+            'description' => 'Append extra value',
+            'propagate' => false,
+            'adds' => [
+                'visible',
+            ],
+        ],
         'with' => [
-            'native' => 'with',
             'description' => 'Autoload the relation',
             'propagate' => false,
             'removes' => [
