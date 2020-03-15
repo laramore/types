@@ -152,6 +152,12 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
+        'timestamp' => [
+            'native' => 'timestamp',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
