@@ -23,6 +23,9 @@ return [
     */
 
     'configurations' => [
+        'big_number' => [
+            'description' => 'Big number value',
+        ],
         'nullable' => [
             'description' => 'Nullable value by default',
             'removes' => [

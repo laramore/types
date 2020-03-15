@@ -26,6 +26,30 @@ return [
     */
 
     'configurations' => [
+        'big_increment' => [
+            'native' => 'big increment',
+            'default_options' => [
+                'visible', 'not_zero', 'unsigned', 'require_sign', 'big_number',
+            ],
+        ],
+        'big_integer' => [
+            'native' => 'big integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'big_number',
+            ],
+        ],
+        'big_unsigned_integer' => [
+            'native' => 'big unsigned integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'big_number',
+            ],
+        ],
+        'binary' => [
+            'native' => 'binary',
+            'default_options' => [
+                'fillable', 'required',
+            ],
+        ],
         'boolean' => [
             'native' => 'bool',
             'default_options' => [
@@ -40,6 +64,18 @@ return [
         ],
         'composed' => [
             'native' => 'composed',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
+        'date' => [
+            'native' => 'date',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
+        'datetime' => [
+            'native' => 'datetime',
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
@@ -66,7 +102,12 @@ return [
             'native' => 'integer',
             'default_options' => [
                 'visible', 'fillable', 'required',
-
+            ],
+        ],
+        'json' => [
+            'native' => 'json',
+            'default_options' => [
+                'visible', 'fillable', 'required',
             ],
         ],
         'unsigned_integer' => [
@@ -105,8 +146,12 @@ return [
                 'visible', 'fillable', 'required', 'not_blank',
             ],
         ],
-        'timestamp' => [
-            'native' => 'timestamp',
+        'time' => [
+            'native' => 'time',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
