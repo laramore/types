@@ -25,6 +25,9 @@ return [
     'configurations' => [
         'big_number' => [
             'description' => 'Big number value',
+            'removes' => [
+                'small_number',
+            ],
         ],
         'nullable' => [
             'description' => 'Nullable value by default',
@@ -63,6 +66,12 @@ return [
         'require_sign' => [
             'native' => 'require sign',
             'description' => 'Force the value to be of the right sign',
+        ],
+        'small_number' => [
+            'description' => 'Small number value',
+            'removes' => [
+                'big_number',
+            ],
         ],
         'not_zero' => [
             'native' => 'not zero',

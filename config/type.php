@@ -68,16 +68,46 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
-        'date' => [
-            'native' => 'date',
-            'default_options' => [
-                'visible', 'fillable', 'required',
-            ],
-        ],
         'datetime' => [
             'native' => 'datetime',
             'default_options' => [
                 'visible', 'fillable', 'required',
+            ],
+        ],
+        'decimal' => [
+            'native' => 'decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
+        'unsigned_decimal' => [
+            'native' => 'unsigned decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned',
+            ],
+        ],
+        'big_decimal' => [
+            'native' => 'unsigned decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'big',
+            ],
+        ],
+        'small_decimal' => [
+            'native' => 'unsigned decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'small',
+            ],
+        ],
+        'big_unsigned_decimal' => [
+            'native' => 'unsigned decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'big',
+            ],
+        ],
+        'small_unsigned_decimal' => [
+            'native' => 'unsigned decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'small',
             ],
         ],
         'email' => [
@@ -104,22 +134,40 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
-        'json' => [
-            'native' => 'json',
-            'default_options' => [
-                'visible', 'fillable', 'required',
-            ],
-        ],
         'unsigned_integer' => [
             'native' => 'unsigned integer',
             'default_options' => [
                 'visible', 'fillable', 'required', 'unsigned',
             ],
         ],
-        'link' => [
-            'native' => 'link',
+        'big_integer' => [
+            'native' => 'unsigned integer',
             'default_options' => [
-                'visible', 'fillable',
+                'visible', 'fillable', 'required', 'big',
+            ],
+        ],
+        'small_integer' => [
+            'native' => 'unsigned integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'small',
+            ],
+        ],
+        'big_unsigned_integer' => [
+            'native' => 'unsigned integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'big',
+            ],
+        ],
+        'small_unsigned_integer' => [
+            'native' => 'unsigned integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'small',
+            ],
+        ],
+        'json' => [
+            'native' => 'json',
+            'default_options' => [
+                'visible', 'fillable', 'required',
             ],
         ],
         'password' => [
@@ -144,12 +192,6 @@ return [
             'native' => 'text',
             'default_options' => [
                 'visible', 'fillable', 'required', 'not_blank',
-            ],
-        ],
-        'time' => [
-            'native' => 'time',
-            'default_options' => [
-                'visible', 'fillable', 'required',
             ],
         ],
         'timestamp' => [
