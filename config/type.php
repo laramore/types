@@ -200,6 +200,12 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
+        'uri' => [
+            'native' => 'uri',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
