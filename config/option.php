@@ -100,13 +100,13 @@ return [
             'native' => 'need special',
             'description' => 'Need at least one special caracter',
         ],
-        'accept_username' => [
-            'native' => 'accept username',
-            'description' => 'Accept to have only a username instead of a full definition (email)',
+        'can_complete' => [
+            'native' => 'can complete',
+            'description' => 'Accept no completed values and auto complete them',
         ],
-        'restrict_domains' => [
-            'native' => 'restrict domains',
-            'description' => 'Only accept a range of domains',
+        'restrict' => [
+            'native' => 'restrict',
+            'description' => 'Restrict to specific values',
         ],
         'use_current' => [
             'native' => 'use current',

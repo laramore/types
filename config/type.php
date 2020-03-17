@@ -113,7 +113,7 @@ return [
         'email' => [
             'native' => 'email',
             'default_options' => [
-                'visible', 'fillable', 'required', 'not_nullable',
+                'visible', 'fillable', 'required', 'restrict',
             ],
         ],
         'enum' => [
@@ -203,11 +203,7 @@ return [
         'uri' => [
             'native' => 'uri',
             'default_options' => [
-                'visible', 'fillable', 'required',
-            ],
-        ],
-            'default_options' => [
-                'visible', 'fillable', 'required',
+                'visible', 'fillable', 'required', 'restrict',
             ],
         ],
     ],
