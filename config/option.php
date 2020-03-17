@@ -100,9 +100,9 @@ return [
             'native' => 'need special',
             'description' => 'Need at least one special caracter',
         ],
-        'can_complete' => [
-            'native' => 'can complete',
-            'description' => 'Accept no completed values and auto complete them',
+        'fixable' => [
+            'native' => 'fixable',
+            'description' => 'Accept fixable values and auto fix them',
         ],
         'restrict' => [
             'native' => 'restrict',
