@@ -68,8 +68,8 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
-        'datetime' => [
-            'native' => 'datetime',
+        'date_time' => [
+            'native' => 'date time',
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
