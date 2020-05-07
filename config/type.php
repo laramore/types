@@ -56,6 +56,12 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
+        'composed' => [
+            'native' => 'composed',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
         'char' => [
             'native' => 'char',
             'default_options' => [
@@ -186,6 +192,18 @@ return [
             'native' => 'pattern',
             'default_options' => [
                 'visible', 'fillable', 'required',
+            ],
+        ],
+        'relation' => [
+            'native' => 'relation',
+            'default_options' => [
+                'visible', 'fillable', 'required',
+            ],
+        ],
+        'reversed_relation' => [
+            'native' => 'reversed relation',
+            'default_options' => [
+                'visible', 'fillable',
             ],
         ],
         'text' => [

@@ -23,39 +23,25 @@ return [
     */
 
     'configurations' => [
+        'append' => [
+            'description' => 'Append extra value',
+            'propagate' => false,
+            'adds' => [
+                'visible',
+            ],
+        ],
         'big_number' => [
             'description' => 'Big number value',
             'removes' => [
                 'small_number',
             ],
         ],
-        'nullable' => [
-            'description' => 'Nullable value by default',
-            'removes' => [
-                'not_nullable',
-            ],
-        ],
-        'not_nullable' => [
-            'native' => 'not nullable',
-            'description' => 'Cannot be nullable',
-            'removes' => [
-                'nullable',
-            ],
-        ],
-        'visible' => [
-            'description' => 'Set as visible',
-        ],
         'fillable' => [
             'description' => 'Set as fillable',
         ],
-        'required' => [
-            'description' => 'Require a value',
-            'adds' => [
-                'fillable',
-            ],
-        ],
-        'unsigned' => [
-            'description' => 'Force a value to be unsigned',
+        'fixable' => [
+            'native' => 'fixable',
+            'description' => 'Accept fixable values and auto fix them',
         ],
         'negative' => [
             'description' => 'Force the value to be negative',
@@ -63,34 +49,9 @@ return [
                 'unsigned',
             ],
         ],
-        'require_sign' => [
-            'native' => 'require sign',
-            'description' => 'Force the value to be of the right sign',
-        ],
-        'small_number' => [
-            'description' => 'Small number value',
-            'removes' => [
-                'big_number',
-            ],
-        ],
-        'not_zero' => [
-            'native' => 'not zero',
-            'description' => 'Forbid value zero',
-        ],
-        'not_blank' => [
-            'native' => 'not blank',
-            'description' => 'Forbid blank value',
-        ],
-        'trim' => [
-            'description' => 'Trim value',
-        ],
         'need_lowercase' => [
             'native' => 'need lowercase',
             'description' => 'Need at least one lowercase caracter',
-        ],
-        'need_uppercase' => [
-            'native' => 'need uppercase',
-            'description' => 'Need at least one uppercase caracter',
         ],
         'need_number' => [
             'native' => 'need number',
@@ -100,24 +61,63 @@ return [
             'native' => 'need special',
             'description' => 'Need at least one special caracter',
         ],
-        'fixable' => [
-            'native' => 'fixable',
-            'description' => 'Accept fixable values and auto fix them',
+        'need_uppercase' => [
+            'native' => 'need uppercase',
+            'description' => 'Need at least one uppercase caracter',
+        ],
+        'not_blank' => [
+            'native' => 'not blank',
+            'description' => 'Forbid blank value',
+        ],
+        'not_nullable' => [
+            'native' => 'not nullable',
+            'description' => 'Cannot be nullable',
+            'removes' => [
+                'nullable',
+            ],
+        ],
+        'not_zero' => [
+            'native' => 'not zero',
+            'description' => 'Forbid value zero',
+        ],
+        'nullable' => [
+            'description' => 'Nullable value by default',
+            'removes' => [
+                'not_nullable', 'required',
+            ],
         ],
         'restrict' => [
             'native' => 'restrict',
             'description' => 'Restrict to specific values',
         ],
+        'require_sign' => [
+            'native' => 'require sign',
+            'description' => 'Force the value to be of the right sign',
+        ],
+        'required' => [
+            'description' => 'Require a value',
+            'adds' => [
+                'fillable',
+            ],
+        ],
+        'small_number' => [
+            'description' => 'Small number value',
+            'removes' => [
+                'big_number',
+            ],
+        ],
+        'trim' => [
+            'description' => 'Trim value',
+        ],
+        'unsigned' => [
+            'description' => 'Force a value to be unsigned',
+        ],
         'use_current' => [
             'native' => 'use current',
             'description' => 'Use the current value',
         ],
-        'append' => [
-            'description' => 'Append extra value',
-            'propagate' => false,
-            'adds' => [
-                'visible',
-            ],
+        'visible' => [
+            'description' => 'Set as visible',
         ],
         'with' => [
             'description' => 'Autoload the relation',
