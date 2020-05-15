@@ -119,7 +119,7 @@ return [
         'email' => [
             'native' => 'email',
             'default_options' => [
-                'visible', 'fillable', 'required', 'restrict',
+                'visible', 'fillable', 'required',
             ],
         ],
         'enum' => [
@@ -221,7 +221,7 @@ return [
         'uri' => [
             'native' => 'uri',
             'default_options' => [
-                'visible', 'fillable', 'required', 'restrict',
+                'visible', 'fillable', 'required',
             ],
         ],
     ],

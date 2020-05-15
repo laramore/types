@@ -86,10 +86,6 @@ return [
                 'not_nullable', 'required',
             ],
         ],
-        'restrict' => [
-            'native' => 'restrict',
-            'description' => 'Restrict to specific values',
-        ],
         'require_sign' => [
             'native' => 'require sign',
             'description' => 'Force the value to be of the right sign',
