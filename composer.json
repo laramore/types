@@ -10,7 +10,7 @@
    },
     "require": {
         "php": ">=7.0.8",
-        "laramore/base": "^0.7.0"
+        "laramore/base": "~0.7"
     },
     "suggest": {
         "laramore/laramore": "Laramore\\Types is made in order to work with Laramore"
