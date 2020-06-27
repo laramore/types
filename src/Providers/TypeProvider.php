@@ -11,7 +11,6 @@
 namespace Laramore\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Container\Container;
 use Laramore\Traits\Provider\MergesConfig;
 use Laramore\Contracts\{
     Manager\LaramoreManager, Provider\LaramoreProvider
@@ -48,7 +47,7 @@ class TypeProvider extends ServiceProvider implements LaramoreProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/type.php' => $this->app->make('path.config').DIRECTORY_SEPARATOR.'type.php',
+            __DIR__.'/../../config/type.php' => config_path('type.php'),
         ]);
     }
 
@@ -59,7 +58,7 @@ class TypeProvider extends ServiceProvider implements LaramoreProvider
      */
     public static function getDefaults(): array
     {
-        return \array_filter(Container::getInstance()->config->get('type.configurations'));
+        return \array_filter(config('type.configurations'));
     }
 
     /**
@@ -69,7 +68,7 @@ class TypeProvider extends ServiceProvider implements LaramoreProvider
      */
     public static function generateManager(): LaramoreManager
     {
-        $class = Container::getInstance()->config->get('type.manager');
+        $class = config('type.manager');
 
         $manager = new $class();
         $manager->set(static::getDefaults());
