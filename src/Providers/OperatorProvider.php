@@ -72,7 +72,7 @@ class OperatorProvider extends ServiceProvider implements LaramoreProvider
 
         $manager = new $class();
         $manager->set(static::getDefaults());
-        $manager->define('needs', 'value');
+        $manager->define('value_type', 'mixed');
 
         return $manager;
     }

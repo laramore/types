@@ -1,5 +1,7 @@
 <?php
 
+namespace Laramore\Elements;
+
 return [
 
     /*
@@ -11,7 +13,7 @@ return [
     |
     */
 
-    'manager' => Laramore\Elements\OperatorManager::class,
+    'manager' => OperatorManager::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -21,39 +23,39 @@ return [
     | This option defines all default operators.
     | The operators must be defined as keys.
     | There are callable for example like this:
-    | > whereNumberInfOrEq(10) to specify that the field `number` must be inferior or equal to 10.
+    | > whereNumberInfEq(10) to specify that the field `number` must be inferior or equal to 10.
     |
     | The value could be:
     | - a `native` string: it is the operator used in database,
     | - an array with:
     |   - a `native` string (by default it is set with the key value),
-    |   - a `needs` definition: force the value to be `null`, a `collection` or a `binary`.
+    |   - a `value_type` definition: force the value to be `null`, a `collection` or a `binary`.
     |
     */
 
     'configurations' =>  [
         'null' => [
-            'needs' => 'null',
+            'value_type' => OperatorElement::NULL_VALUE,
         ],
         'not_null' => [
             'native' => 'not null',
-            'needs' => 'null',
+            'value_type' => OperatorElement::NULL_VALUE,
         ],
         'doesnt_exist' => [
             'native' => 'null',
-            'needs' => 'null',
+            'value_type' => OperatorElement::NULL_VALUE,
         ],
         'dont_exist' => [
             'native' => 'null',
-            'needs' => 'null',
+            'value_type' => OperatorElement::NULL_VALUE,
         ],
         'exist' => [
             'native' => 'not null',
-            'needs' => 'null',
+            'value_type' => OperatorElement::NULL_VALUE,
         ],
         'exists' => [
             'native' => 'not null',
-            'needs' => 'null',
+            'value_type' => OperatorElement::NULL_VALUE,
         ],
         'equal' => [
             'native' => '=',
@@ -120,23 +122,23 @@ return [
         ],
         'bitand' => [
             'native' => '&',
-            'needs' => 'binary',
+            'value_type' => OperatorElement::BINARY_VALUE,
         ],
         'bitor' => [
             'native' => '|',
-            'needs' => 'binary',
+            'value_type' => OperatorElement::BINARY_VALUE,
         ],
         'bitxor' => [
             'native' => '^',
-            'needs' => 'binary',
+            'value_type' => OperatorElement::BINARY_VALUE,
         ],
         'bitleft' => [
             'native' => '<<',
-            'needs' => 'binary',
+            'value_type' => OperatorElement::BINARY_VALUE,
         ],
         'bitright' => [
             'native' => '>>',
-            'needs' => 'binary',
+            'value_type' => OperatorElement::BINARY_VALUE,
         ],
         'match' => [
             'native' => '~',
@@ -164,11 +166,11 @@ return [
         ],
         'in' => [
             'native' => 'in',
-            'needs' => 'collection'
+            'value_type' => OperatorElement::COLLECTION_VALUE,
         ],
         'not_in' => [
             'native' => 'not in',
-            'needs' => 'collection'
+            'value_type' => OperatorElement::COLLECTION_VALUE,
         ],
     ],
 
