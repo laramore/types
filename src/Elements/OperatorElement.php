@@ -14,9 +14,12 @@ use Illuminate\Support\Str;
 
 class OperatorElement extends Element
 {
-    const COLLECTION_VALUE = 'collection';
-    const NULL_VALUE = 'null';
-    const BINARY_VALUE = 'binary';
+    const COLLECTION_TYPE = 'collection';
+    const BINARY_TYPE = 'binary';
+    const STRING_TYPE = 'numeric';
+    const NUMERIC_TYPE = 'numeric';
+    const MIXED_TYPE = 'mixed';
+    const NULL_TYPE = 'null';
 
     /**
      * Return where method.
@@ -25,7 +28,7 @@ class OperatorElement extends Element
      */
     public function getWhereMethod(): string
     {
-        return Str::studly($this->get('name'));
+        return 'where'.Str::studly($this->get('name'));
     }
 
     /**

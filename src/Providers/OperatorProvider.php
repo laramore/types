@@ -15,6 +15,7 @@ use Laramore\Traits\Provider\MergesConfig;
 use Laramore\Contracts\{
 	Manager\LaramoreManager, Provider\LaramoreProvider
 };
+use Laramore\Elements\OperatorElement;
 use Laramore\Facades\Operator;
 
 class OperatorProvider extends ServiceProvider implements LaramoreProvider
@@ -72,7 +73,8 @@ class OperatorProvider extends ServiceProvider implements LaramoreProvider
 
         $manager = new $class();
         $manager->set(static::getDefaults());
-        $manager->define('value_type', 'mixed');
+        $manager->define('value_type', OperatorElement::MIXED_TYPE);
+        $manager->define('fallback', '=');
 
         return $manager;
     }
