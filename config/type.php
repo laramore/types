@@ -26,24 +26,6 @@ return [
     */
 
     'configurations' => [
-        'big_increment' => [
-            'native' => 'big increment',
-            'default_options' => [
-                'visible', 'not_zero', 'unsigned', 'require_sign', 'big_number',
-            ],
-        ],
-        'big_integer' => [
-            'native' => 'big integer',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'big_number',
-            ],
-        ],
-        'big_unsigned_integer' => [
-            'native' => 'big unsigned integer',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'unsigned', 'big_number',
-            ],
-        ],
         'binary' => [
             'native' => 'binary',
             'default_options' => [
@@ -52,18 +34,6 @@ return [
         ],
         'boolean' => [
             'native' => 'bool',
-            'default_options' => [
-                'visible', 'fillable', 'required',
-            ],
-        ],
-        'composed' => [
-            'native' => 'composed',
-            'default_options' => [
-                'visible', 'fillable', 'required',
-            ],
-        ],
-        'char' => [
-            'native' => 'char',
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
@@ -86,52 +56,10 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
-        'unsigned_decimal' => [
-            'native' => 'unsigned decimal',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'unsigned',
-            ],
-        ],
-        'big_decimal' => [
-            'native' => 'unsigned decimal',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'big',
-            ],
-        ],
-        'small_decimal' => [
-            'native' => 'unsigned decimal',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'small',
-            ],
-        ],
-        'big_unsigned_decimal' => [
-            'native' => 'unsigned decimal',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'unsigned', 'big',
-            ],
-        ],
-        'small_unsigned_decimal' => [
-            'native' => 'unsigned decimal',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'unsigned', 'small',
-            ],
-        ],
-        'email' => [
-            'native' => 'email',
-            'default_options' => [
-                'visible', 'fillable', 'required',
-            ],
-        ],
         'enum' => [
             'native' => 'enum',
             'default_options' => [
                 'visible', 'fillable', 'required',
-            ],
-        ],
-        'increment' => [
-            'native' => 'increment',
-            'default_options' => [
-                'visible', 'not_zero', 'unsigned', 'require_sign',
             ],
         ],
         'integer' => [
@@ -140,56 +68,8 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
-        'unsigned_integer' => [
-            'native' => 'unsigned integer',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'unsigned',
-            ],
-        ],
-        'big_integer' => [
-            'native' => 'unsigned integer',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'big',
-            ],
-        ],
-        'small_integer' => [
-            'native' => 'unsigned integer',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'small',
-            ],
-        ],
-        'big_unsigned_integer' => [
-            'native' => 'unsigned integer',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'unsigned', 'big',
-            ],
-        ],
-        'small_unsigned_integer' => [
-            'native' => 'unsigned integer',
-            'default_options' => [
-                'visible', 'fillable', 'required', 'unsigned', 'small',
-            ],
-        ],
         'json' => [
             'native' => 'json',
-            'default_options' => [
-                'visible', 'fillable', 'required',
-            ],
-        ],
-        'password' => [
-            'native' => 'password',
-            'default_options' => [
-                'fillable', 'required', 'need_lowercase', 'need_uppercase', 'need_number'
-            ],
-        ],
-        'primary_id' => [
-            'native' => 'primary id',
-            'default_options' => [
-                'visible', 'not_zero', 'unsigned', 'require_sign', 'not_nullable',
-            ],
-        ],
-        'pattern' => [
-            'native' => 'pattern',
             'default_options' => [
                 'visible', 'fillable', 'required',
             ],
@@ -218,12 +98,143 @@ return [
                 'visible', 'fillable', 'required',
             ],
         ],
+
+        'char' => [
+            'native' => 'char',
+            'parent' => 'text',
+        ],
+
+        'pattern' => [
+            'native' => 'pattern',
+            'parent' => 'char',
+        ],
+
+        'email' => [
+            'native' => 'email',
+            'parent' => 'pattern',
+        ],
         'uri' => [
             'native' => 'uri',
+            'parent' => 'pattern',
+        ],
+        'password' => [
+            'native' => 'password',
+            'parent' => 'pattern',
             'default_options' => [
-                'visible', 'fillable', 'required',
+                'fillable', 'required', 'need_lowercase', 'need_uppercase', 'need_number'
             ],
         ],
+
+        'unsigned_integer' => [
+            'native' => 'unsigned integer',
+            'parent' => 'integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned',
+            ],
+        ],
+        'big_integer' => [
+            'native' => 'unsigned integer',
+            'parent' => 'integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'big',
+            ],
+        ],
+        'small_integer' => [
+            'native' => 'unsigned integer',
+            'parent' => 'integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'small',
+            ],
+        ],
+        'big_unsigned_integer' => [
+            'native' => 'unsigned integer',
+            'parent' => 'integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'big',
+            ],
+        ],
+        'small_unsigned_integer' => [
+            'native' => 'unsigned integer',
+            'parent' => 'unsigned_integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'small',
+            ],
+        ],
+        'big_unsigned_integer' => [
+            'native' => 'big unsigned integer',
+            'parent' => 'unsigned_integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'big_number',
+            ],
+        ],
+        'big_integer' => [
+            'native' => 'big integer',
+            'parent' => 'integer',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'big_number',
+            ],
+        ],
+
+        'increment' => [
+            'native' => 'increment',
+            'parent' => 'unsigned_integer',
+            'default_options' => [
+                'visible', 'not_zero', 'unsigned', 'require_sign',
+            ],
+        ],
+        'primary_id' => [
+            'native' => 'primary id',
+            'parent' => 'unsigned_integer',
+            'default_options' => [
+                'visible', 'not_zero', 'unsigned', 'require_sign', 'not_nullable',
+            ],
+        ],
+
+        'big_increment' => [
+            'native' => 'big increment',
+            'parent' => 'increment',
+            'default_options' => [
+                'visible', 'not_zero', 'unsigned', 'require_sign', 'big_number',
+            ],
+        ],
+        
+        
+        'unsigned_decimal' => [
+            'native' => 'unsigned decimal',
+            'parent' => 'decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned',
+            ],
+        ],
+        'big_decimal' => [
+            'native' => 'unsigned decimal',
+            'parent' => 'decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'big',
+            ],
+        ],
+        'small_decimal' => [
+            'native' => 'unsigned decimal',
+            'parent' => 'decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'small',
+            ],
+        ],
+        'big_unsigned_decimal' => [
+            'native' => 'unsigned decimal',
+            'parent' => 'unsigned_decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'big',
+            ],
+        ],
+        'small_unsigned_decimal' => [
+            'native' => 'unsigned decimal',
+            'parent' => 'unsigned_decimal',
+            'default_options' => [
+                'visible', 'fillable', 'required', 'unsigned', 'small',
+            ],
+        ],
+        
     ],
 
 ];

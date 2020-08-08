@@ -15,4 +15,18 @@ use Laramore\Contracts\Manager\LaramoreManager;
 class TypeManager extends ElementManager implements LaramoreManager
 {
     protected $elementClass = TypeElement::class;
+
+    /**
+     * Lock every element.
+     *
+     * @return void
+     */
+    protected function locking()
+    {
+        foreach ($this->all() as $element) {
+            $element->inherit();
+        }
+
+        parent::locking();
+    }
 }
